@@ -304,7 +304,7 @@ Use this endpoint to edit a module. Make sure to fill all the fields of the modu
 ``` json
 {
 
-}'
+}
 ```
 
 Use this endpoint to get individual user performance.
@@ -468,11 +468,6 @@ Use this endpoint to create or update a new module. Empty ID fields creates a ne
 ]
 ```
 
-> Call returns
-```json
-
-```
-
 Use this endpoint to send invitation to new user. Requester must be a manager
 
 `GET http://sdev.tryoration.com/v1_5/sales/sendInvite/sessionid`
@@ -509,7 +504,7 @@ Use this endpoint to handle an invitation accepted by a user.
 
 ## Put Session
 
-> Input
+> POST Input
 ```json
 {
   "Date": "some-date",
