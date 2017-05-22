@@ -2,188 +2,516 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
-
-search: true
+  - json
 ---
 
-# Introduction
+# Issues
+- Reduce calls
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
+# HTTP Error Status Codes
+## Internal Server Error
+- CODE `500`
+- REASON `Problem with a db connection or json marshaling`
+- BODY `Can raise security problems. User can learn backend structure`
+> Return
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "Error": "Error code"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+## Bad Request
+- CODE `400`
+- REASON `One of the requested items does not exist`
+- BODY `Can raise security problems. Info leakage`
+> Return
+```json
+{
+    "Error": "Item does not exist"
+}
+```
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+## Unauthorized
+- CODE `401`
+- REASON `Non manager user requesting a manager view`
+- BODY `Can raise security issues. Info leakage`
+> Return
+```json
+{
+    "Error": "Not a manager"
+}
+```
 
-### HTTP Request
+# Endpoints
+## Profile Settings (View 11)
+Use this endpoint to get profile settings for a user.
+`GET http://dev.oraiapp.com/v1_5/sales/getUser/tid/uid/sessionid`
 
-`GET http://example.com/kittens/<ID>`
+> Call returns
+```json
+{
+	"TID": "b43oiie44tl41lagpvcg",
+	"ID": "b43oiie44tl41lagpveg",
+	"CID": "b41v1ve44tl62gbtoeug",
+	"Email": "buriderveni@gmail.com",
+	"Name": "Burim",
+	"LastName": "Derveni",
+	"Image": "Some image",
+	"Status": "accepted",
+	"Performance": 40,
+	"Sessions": 1,
+	"Manager": false
+}
+```
 
-### URL Parameters
+## Individual User Dashboard with Sessions
+Use this endpoint to get individual user dashboard including sessions
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+`GET http://sdev.tryoratio.com/v1_5/getUserSessions/tid/uid/sessionid`
 
+> Call returns
+```json
+{
+  "LastName": "Derveni",
+  "Name": "Burim",
+  "Sessions": [
+    {
+      "UID": "b450it644tl7g9hmodsg",
+      "ID": "b450it644tl7g9hmodrg",
+      "Opportunity": "",
+      "Module": "",
+      "Date": "",
+      "Duration": 0,
+      "Score": 40
+    }
+  ]
+}
+```
+## Team Settings
+Use this endpoint to get team settings. Requester must be a manager.
+
+`GET http://sdev.tryoration.com/v1_5/sales/getTeamSettings/cid/tid/uid/sessionid`
+
+> Call returns
+```json
+{
+  "Invited": [
+    {
+      "TID": "",
+      "ID": "",
+      "Email": "burimderveni@gmail.com",
+      "Created": 0,
+      "Company": ""
+    }
+  ],
+  "Members": [
+    {
+      "TID": "",
+      "ID": "",
+      "CID": "",
+      "Email": "tempuser@oratio.ai",
+      "Name": "some-name",
+      "LastName": "some-lastname",
+      "Image": "",
+      "Performance": 0,
+      "Sessions": 0,
+      "Manager": false
+    }
+  ],
+  "Name": "selectTeam"
+}
+```
+
+## Team Dashboard
+Use this endpoint to team results for a manager. Requester must be a manager
+
+`GET http://sdev.tryoratio.com/sales/v1_5/getTeam/cid/tid/uid/sessionid`
+
+> Call returns
+```json
+{
+  "Members": [
+    {
+      "ID": "b450it644tl7g9hmodtg",
+      "Image": "Some image",
+      "LastName": "Gupta",
+      "Name": "Paritosh",
+      "Performance": "30"
+    }
+  ],
+  "Name": "FrontEnd",
+  "TID": "b450it644tl7g9hmodr0"
+}
+```
+
+## Manager Products
+Use this endpoint to get products and all corresponding modules under manager
+
+`GET sdev.tryoration.com/v1_5/sales/getManagerProducts/cid/uid/sessionid`
+
+> Call returns
+```json
+{
+  "Products": [
+    {
+      "ID": "b450it644tl7g9hmodu0",
+      "Modules": [
+        {
+          "PID": "b450it644tl7g9hmodu0",
+          "ID": "b450it644tl7g9hmodpg",
+          "Name": "Development",
+          "Instructions": [
+            "Step 1",
+            "Step 2"
+          ],
+          "Keywords": [
+            "Word 1",
+            "Word 2"
+          ],
+          "TargetTime": 15
+        },
+        {
+          "PID": "b450it644tl7g9hmodu0",
+          "ID": "b450it644tl7g9hmodq0",
+          "Name": "PublicSpeaking",
+          "Instructions": [
+            "Step 1",
+            "Step 2"
+          ],
+          "Keywords": [
+            "Word 1",
+            "Word 2"
+          ],
+          "TargetTime": 16
+        }
+      ],
+      "Name": "Sales"
+    },
+    {
+      "ID": "b4512m223akink066mp0",
+      "Modules": [],
+      "Name": "Education"
+    }
+  ]
+}
+```
+
+## Get Session
+Use this endpoint to get information about a session.
+
+`GET sdev.tryoration.com/v1_5/sales/getSesion/uid/id/sessionid`
+
+> Call returns
+```json
+{
+  "Final": true,
+  "StartTimes": null,
+  "EndTimes": null,
+  "Words": null,
+  "RawString": "",
+  "Fillers": {
+    "Summary": null,
+    "Locations": null,
+    "Recommendation": "Fillers distract your audience from focusing on your speech",
+    "Total": 0
+  },
+  "Error": "",
+  "WPM": {
+    "WPM": null,
+    "WPMRange": {
+      "Blue": null,
+      "Green": null,
+      "Red": null
+    },
+    "Recommendation": "",
+    "Average": 0
+  },
+  "Pauses": {
+    "Pauses": null,
+    "Recommendation": ""
+  },
+  "Projection": {
+    "Labels": null,
+    "Data": null,
+    "Recommendation": "Need more data to show results",
+    "Locations": null
+  },
+  "Energy": {
+    "Values": null,
+    "VocalVariation": 0,
+    "Recommendation": ""
+  },
+  "TranscriptClarity": "",
+  "Prompt": ""
+}
+```
+
+## Edit Module
+Use this endpoint to edit a module. Make sure to fill all the fields of the module. This will remove the old module and replace it
+
+`POST http:/sdev.tryoration.com/sales/v1_5/postModule/uid/sessionid`
+
+> POST input
+```json
+{
+	"PID": "product-id",
+	"ID": "module-id",
+	"Name ": "some - name ",
+	"Instructions": ["string1", "string"],
+	"Keywords": ["word1", "word2"],
+	"TargetTime": "time"
+}
+```
+> Call returns
+```json
+{
+	"PID": "product-id",
+	"ID": "module-id",
+	"Name ": "some - name ",
+	"Instructions": ["string1", "string"],
+	"Keywords": ["word1", "word2"],
+	"TargetTime": "time"
+}
+```
+
+
+## Individual Session Performance
+Use this endpoint to get individual user performance.
+
+`GET http://tryoration.com/sales/v1_5/getsession/uid/sid/sessionid`
+
+> Call returns
+``` json
+{
+
+}'
+```
+
+## Create Company
+Use this endpoint to create a new company.
+
+`GET http://sdev.tryoration.com/v1_5/sales/putCompany/sessionid`
+
+> POST Input
+```json
+{
+	"Name": "some-name",
+	"Location": "some-location",
+	"Image": "some-image"
+}
+```
+> Call returns
+```json
+{
+	"ID": "generated id",
+	"Name": "some-name",
+	"Location": "some-location",
+	"Image": "some-image"
+}
+```
+
+## Create Team
+Use this endpoint to create a new team.
+
+`GET http://sdev.tryoration.com/v1_5/sales/putTeam/sessionid`
+
+> POST input
+```json
+{
+	"CID": "companyID",
+	"Name": "some-name",
+	"ManagerID": "some-id"
+}
+```
+> Call returns
+```json
+{
+	"CID": "companyID",
+	"ID": "generated ID",
+	"Name": "some-name",
+	"ManagerID": "some-id"
+}
+```
+
+## Create, Update User
+Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
+
+`GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid`
+
+> Post input
+```json
+{
+	"TID": "team ID",
+	"CID": "CompanyID",
+	"Email": "some email",
+	"Name": "some-name",
+	"LastName": "some-lastname",
+	"Image": "some-image",
+	"Performance": 0,
+	"Sessions": 0,
+}
+```
+> Call returns
+```json
+{
+	"TID": "team ID",
+	"CID": "company ID",
+	"ID": "generated ID",
+	"Email": "some email",
+	"Name": "some-name",
+	"LastName": "some-lastname",
+	"Image": "some-image",
+	"Performance": "int perf",
+	"Sessions": "some sessions",
+	"Manager": "bool manager"
+}
+```
+
+## Create Product
+Use this endpoint to create new product.
+
+`GET http://sdev.tryoration.com/v1_5/sales/putProduct/sessionid`
+
+> POST input
+```json
+{
+	"TID": "team ID",
+	"Name": "some-name",
+	"Image": "some-image"
+}
+```
+> Call returns
+```json
+{
+	"ID": "generated ID",
+  "TID": "team ID",
+	"Name": "some-name",
+	"Image": "some-image"
+}
+```
+
+## Create, Update Module
+Use this endpoint to create or update a new module. Empty ID fields creates a new module. Requester must e manager.
+
+`GET http://sdev.tryoration.com/v1_5/sales/putModule/cid/tid/sessionid`
+
+> POST input
+```json
+{
+	"PID": "some-id",
+	"Name ": "some-name",
+	"Instructions": ["string1", "string"],
+	"Keywords": ["word1", "word2"],
+	"TargetTime": "time"
+}
+```
+> Call returns
+```json
+{
+	"PID": "some-id",
+	"ID": "module-id",
+	"Name ": "some - name ",
+	"Instructions": ["string1", "string"],
+	"Keywords": ["word1", "word2"],
+	"TargetTime": "time"
+}
+```
+
+## Send Invite
+Use this endpoint to send invitation to new user. Requester must be a manager
+
+`GET http://sdev.tryoration.com/v1_5/sales/sendInvite/sessionid`
+
+> POST Input
+```json
+[
+    {
+      "TID": "someteamID",
+      "Email": "someEmail@host.com",
+      "TeamName": "Orai",
+      "CID": "some id",
+      "ManagerName": "someName",
+    }
+]
+```
+> Call returns
+```json
+
+```
+
+## Get Invite
+Use this endpoint to handle an invitation accepted by a user.
+
+`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/id`
+
+- Call returns
+```json
+{
+  "TID": "teamID",
+  "ID": "generatedID",
+  "Email": "email",
+  "Created": 0,
+  "TeamName": "team",
+  "CID": "some id"
+}
+```
+```json
+{
+"Error": "Not found"
+}
+```
+```json
+{
+"Error": "Invitation expired"
+}
+```
+
+## Put Session
+Use this endpoint to put a new session. This is an internal package funciton.
+> Input
+```json
+{
+  "Date": "some-date",
+  "Duration": 7,
+  "Module": "some-name",
+  "Opportunity": "some-opportunity",
+  "Score": 10,
+  "UID": "userID",
+  "MID": "module ID",
+  "PID": "product ID",
+}
+```
+
+## Put Image
+Enter an image for a user. user must eneter an image for each team he joins.
+
+`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/uid`
+
+> POST input
+```json
+{
+  "body": "[]byte",
+  "type": "image/jpeg|image/png|image/bmp",
+}
+```
+
+## Delete Product
+Use this endpoint to delete product. All modules under product removed.
+
+`GET http://dev.oraiapp.com/v1_5/sales/deleteProduct/cid/tid/pid/uid/sessionid`
+
+## Delete Module
+Use this endpoint to delete a module.
+
+`GET http://dev.oraiapp.com/v1_5/sales/deleteModule/cid/tid/pid/mid/uid/sessionid`
+
+## Delete Member
+Use this endpoint to delete a module. All sessions under member removed.
+
+`GET http://dev.oraiapp.com/v1_5/sales/deleteMember/cid/tid/uid/mid/sessionid`
+
+## Delete Session
+Use this endpoint to delete a session
+
+`GET dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid`
+ls
