@@ -9,10 +9,9 @@ language_tabs:
 - Reduce calls
 
 # HTTP Error Status Codes
+
 ## Internal Server Error
-- CODE `500`
-- REASON `Problem with a db connection or json marshaling`
-- BODY `Can raise security problems. User can learn backend structure`
+
 > Return
 ```json
 {
@@ -20,10 +19,13 @@ language_tabs:
 }
 ```
 
+- CODE `500`
+- REASON `Problem with a db connection or json marshaling`
+- BODY `Can raise security problems. User can learn backend structure`
+
+
 ## Bad Request
-- CODE `400`
-- REASON `One of the requested items does not exist`
-- BODY `Can raise security problems. Info leakage`
+
 > Return
 ```json
 {
@@ -31,10 +33,12 @@ language_tabs:
 }
 ```
 
+- CODE `400`
+- REASON `One of the requested items does not exist`
+- BODY `Can raise security problems. Info leakage`
+
 ## Unauthorized
-- CODE `401`
-- REASON `Non manager user requesting a manager view`
-- BODY `Can raise security issues. Info leakage`
+
 > Return
 ```json
 {
@@ -42,10 +46,14 @@ language_tabs:
 }
 ```
 
+- CODE `401`
+- REASON `Non manager user requesting a manager view`
+- BODY `Can raise security issues. Info leakage`
+
+
 # Endpoints
+
 ## Profile Settings (View 11)
-Use this endpoint to get profile settings for a user.
-`GET http://dev.oraiapp.com/v1_5/sales/getUser/tid/uid/sessionid`
 
 > Call returns
 ```json
@@ -64,10 +72,12 @@ Use this endpoint to get profile settings for a user.
 }
 ```
 
-## Individual User Dashboard with Sessions
-Use this endpoint to get individual user dashboard including sessions
+Use this endpoint to get profile settings for a user.
 
-`GET http://sdev.tryoratio.com/v1_5/getUserSessions/tid/uid/sessionid`
+`GET http://dev.oraiapp.com/v1_5/sales/getUser/tid/uid/sessionid`
+
+
+## Individual User Dashboard with Sessions
 
 > Call returns
 ```json
@@ -87,10 +97,13 @@ Use this endpoint to get individual user dashboard including sessions
   ]
 }
 ```
-## Team Settings
-Use this endpoint to get team settings. Requester must be a manager.
 
-`GET http://sdev.tryoration.com/v1_5/sales/getTeamSettings/cid/tid/uid/sessionid`
+Use this endpoint to get individual user dashboard including sessions
+
+`GET http://sdev.tryoratio.com/v1_5/getUserSessions/tid/uid/sessionid`
+
+
+## Team Settings
 
 > Call returns
 ```json
@@ -122,10 +135,12 @@ Use this endpoint to get team settings. Requester must be a manager.
 }
 ```
 
-## Team Dashboard
-Use this endpoint to team results for a manager. Requester must be a manager
+Use this endpoint to get team settings. Requester must be a manager.
 
-`GET http://sdev.tryoratio.com/sales/v1_5/getTeam/cid/tid/uid/sessionid`
+`GET http://sdev.tryoration.com/v1_5/sales/getTeamSettings/cid/tid/uid/sessionid`
+
+
+## Team Dashboard
 
 > Call returns
 ```json
@@ -144,10 +159,11 @@ Use this endpoint to team results for a manager. Requester must be a manager
 }
 ```
 
-## Manager Products
-Use this endpoint to get products and all corresponding modules under manager
+Use this endpoint to team results for a manager. Requester must be a manager
 
-`GET sdev.tryoration.com/v1_5/sales/getManagerProducts/cid/uid/sessionid`
+`GET http://sdev.tryoratio.com/sales/v1_5/getTeam/cid/tid/uid/sessionid`
+
+## Manager Products
 
 > Call returns
 ```json
@@ -196,10 +212,11 @@ Use this endpoint to get products and all corresponding modules under manager
 }
 ```
 
-## Get Session
-Use this endpoint to get information about a session.
+Use this endpoint to get products and all corresponding modules under manager
 
-`GET sdev.tryoration.com/v1_5/sales/getSesion/uid/id/sessionid`
+`GET sdev.tryoration.com/v1_5/sales/getManagerProducts/cid/uid/sessionid`
+
+## Get Session
 
 > Call returns
 ```json
@@ -246,10 +263,11 @@ Use this endpoint to get information about a session.
 }
 ```
 
-## Edit Module
-Use this endpoint to edit a module. Make sure to fill all the fields of the module. This will remove the old module and replace it
+Use this endpoint to get information about a session.
 
-`POST http:/sdev.tryoration.com/sales/v1_5/postModule/uid/sessionid`
+`GET sdev.tryoration.com/v1_5/sales/getSesion/uid/id/sessionid`
+
+## Edit Module
 
 > POST input
 ```json
@@ -262,6 +280,7 @@ Use this endpoint to edit a module. Make sure to fill all the fields of the modu
 	"TargetTime": "time"
 }
 ```
+
 > Call returns
 ```json
 {
@@ -274,11 +293,12 @@ Use this endpoint to edit a module. Make sure to fill all the fields of the modu
 }
 ```
 
+Use this endpoint to edit a module. Make sure to fill all the fields of the module. This will remove the old module and replace it
+
+`POST http:/sdev.tryoration.com/sales/v1_5/postModule/uid/sessionid`
+
 
 ## Individual Session Performance
-Use this endpoint to get individual user performance.
-
-`GET http://tryoration.com/sales/v1_5/getsession/uid/sid/sessionid`
 
 > Call returns
 ``` json
@@ -287,10 +307,12 @@ Use this endpoint to get individual user performance.
 }'
 ```
 
-## Create Company
-Use this endpoint to create a new company.
+Use this endpoint to get individual user performance.
 
-`GET http://sdev.tryoration.com/v1_5/sales/putCompany/sessionid`
+`GET http://tryoration.com/sales/v1_5/getsession/uid/sid/sessionid`
+
+
+## Create Company
 
 > POST Input
 ```json
@@ -300,6 +322,7 @@ Use this endpoint to create a new company.
 	"Image": "some-image"
 }
 ```
+
 > Call returns
 ```json
 {
@@ -310,10 +333,11 @@ Use this endpoint to create a new company.
 }
 ```
 
-## Create Team
-Use this endpoint to create a new team.
+Use this endpoint to create a new company.
 
-`GET http://sdev.tryoration.com/v1_5/sales/putTeam/sessionid`
+`GET http://sdev.tryoration.com/v1_5/sales/putCompany/sessionid`
+
+## Create Team
 
 > POST input
 ```json
@@ -323,6 +347,7 @@ Use this endpoint to create a new team.
 	"ManagerID": "some-id"
 }
 ```
+
 > Call returns
 ```json
 {
@@ -333,10 +358,12 @@ Use this endpoint to create a new team.
 }
 ```
 
-## Create, Update User
-Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
+Use this endpoint to create a new team.
 
-`GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid`
+`GET http://sdev.tryoration.com/v1_5/sales/putTeam/sessionid`
+
+
+## Create, Update User
 
 > Post input
 ```json
@@ -351,6 +378,7 @@ Use this endpoint to create or update a new user. Empty ID fields creates a new 
 	"Sessions": 0,
 }
 ```
+
 > Call returns
 ```json
 {
@@ -367,10 +395,11 @@ Use this endpoint to create or update a new user. Empty ID fields creates a new 
 }
 ```
 
-## Create Product
-Use this endpoint to create new product.
+Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
 
-`GET http://sdev.tryoration.com/v1_5/sales/putProduct/sessionid`
+`GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid`
+
+## Create Product
 
 > POST input
 ```json
@@ -380,6 +409,7 @@ Use this endpoint to create new product.
 	"Image": "some-image"
 }
 ```
+
 > Call returns
 ```json
 {
@@ -390,10 +420,11 @@ Use this endpoint to create new product.
 }
 ```
 
-## Create, Update Module
-Use this endpoint to create or update a new module. Empty ID fields creates a new module. Requester must e manager.
+Use this endpoint to create new product.
 
-`GET http://sdev.tryoration.com/v1_5/sales/putModule/cid/tid/sessionid`
+`GET http://sdev.tryoration.com/v1_5/sales/putProduct/sessionid`
+
+## Create, Update Module
 
 > POST input
 ```json
@@ -405,6 +436,7 @@ Use this endpoint to create or update a new module. Empty ID fields creates a ne
 	"TargetTime": "time"
 }
 ```
+
 > Call returns
 ```json
 {
@@ -417,10 +449,11 @@ Use this endpoint to create or update a new module. Empty ID fields creates a ne
 }
 ```
 
-## Send Invite
-Use this endpoint to send invitation to new user. Requester must be a manager
+Use this endpoint to create or update a new module. Empty ID fields creates a new module. Requester must e manager.
 
-`GET http://sdev.tryoration.com/v1_5/sales/sendInvite/sessionid`
+`GET http://sdev.tryoration.com/v1_5/sales/putModule/cid/tid/sessionid`
+
+## Send Invite
 
 > POST Input
 ```json
@@ -434,17 +467,19 @@ Use this endpoint to send invitation to new user. Requester must be a manager
     }
 ]
 ```
+
 > Call returns
 ```json
 
 ```
 
+Use this endpoint to send invitation to new user. Requester must be a manager
+
+`GET http://sdev.tryoration.com/v1_5/sales/sendInvite/sessionid`
+
 ## Get Invite
-Use this endpoint to handle an invitation accepted by a user.
 
-`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/id`
-
-- Call returns
+> Call returns
 ```json
 {
   "TID": "teamID",
@@ -455,19 +490,25 @@ Use this endpoint to handle an invitation accepted by a user.
   "CID": "some id"
 }
 ```
+
 ```json
 {
 "Error": "Not found"
 }
 ```
+
 ```json
 {
 "Error": "Invitation expired"
 }
 ```
 
+Use this endpoint to handle an invitation accepted by a user.
+
+`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/id`
+
 ## Put Session
-Use this endpoint to put a new session. This is an internal package funciton.
+
 > Input
 ```json
 {
@@ -482,10 +523,9 @@ Use this endpoint to put a new session. This is an internal package funciton.
 }
 ```
 
-## Put Image
-Enter an image for a user. user must eneter an image for each team he joins.
+Use this endpoint to put a new session. This is an internal package funciton.
 
-`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/uid`
+## Put Image
 
 > POST input
 ```json
@@ -495,23 +535,30 @@ Enter an image for a user. user must eneter an image for each team he joins.
 }
 ```
 
+Enter an image for a user. user must enter an image for each team he joins.
+
+`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/uid`
+
 ## Delete Product
+
 Use this endpoint to delete product. All modules under product removed.
 
 `GET http://dev.oraiapp.com/v1_5/sales/deleteProduct/cid/tid/pid/uid/sessionid`
 
 ## Delete Module
+
 Use this endpoint to delete a module.
 
 `GET http://dev.oraiapp.com/v1_5/sales/deleteModule/cid/tid/pid/mid/uid/sessionid`
 
 ## Delete Member
+
 Use this endpoint to delete a module. All sessions under member removed.
 
 `GET http://dev.oraiapp.com/v1_5/sales/deleteMember/cid/tid/uid/mid/sessionid`
 
 ## Delete Session
+
 Use this endpoint to delete a session
 
 `GET dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid`
-ls
