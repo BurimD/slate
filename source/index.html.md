@@ -13,6 +13,7 @@ language_tabs:
 ## Internal Server Error
 
 > Return
+
 ```json
 {
     "Error": "Error code"
@@ -27,6 +28,7 @@ language_tabs:
 ## Bad Request
 
 > Return
+
 ```json
 {
     "Error": "Item does not exist"
@@ -40,6 +42,7 @@ language_tabs:
 ## Unauthorized
 
 > Return
+
 ```json
 {
     "Error": "Not a manager"
@@ -56,6 +59,7 @@ language_tabs:
 ## Profile Settings (View 11)
 
 > Call returns
+
 ```json
 {
 	"TID": "b43oiie44tl41lagpvcg",
@@ -80,6 +84,7 @@ Use this endpoint to get profile settings for a user.
 ## Individual User Dashboard with Sessions
 
 > Call returns
+
 ```json
 {
   "LastName": "Derveni",
@@ -106,6 +111,7 @@ Use this endpoint to get individual user dashboard including sessions
 ## Team Settings
 
 > Call returns
+
 ```json
 {
   "Invited": [
@@ -143,6 +149,7 @@ Use this endpoint to get team settings. Requester must be a manager.
 ## Team Dashboard
 
 > Call returns
+
 ```json
 {
   "Members": [
@@ -166,6 +173,7 @@ Use this endpoint to team results for a manager. Requester must be a manager
 ## Manager Products
 
 > Call returns
+
 ```json
 {
   "Products": [
@@ -219,6 +227,7 @@ Use this endpoint to get products and all corresponding modules under manager
 ## Get Session
 
 > Call returns
+
 ```json
 {
   "Final": true,
@@ -270,6 +279,7 @@ Use this endpoint to get information about a session.
 ## Edit Module
 
 > POST input
+
 ```json
 {
 	"PID": "product-id",
@@ -282,6 +292,7 @@ Use this endpoint to get information about a session.
 ```
 
 > Call returns
+
 ```json
 {
 	"PID": "product-id",
@@ -301,6 +312,7 @@ Use this endpoint to edit a module. Make sure to fill all the fields of the modu
 ## Individual Session Performance
 
 > Call returns
+
 ``` json
 {
 
@@ -315,6 +327,7 @@ Use this endpoint to get individual user performance.
 ## Create Company
 
 > POST Input
+
 ```json
 {
 	"Name": "some-name",
@@ -324,6 +337,7 @@ Use this endpoint to get individual user performance.
 ```
 
 > Call returns
+
 ```json
 {
 	"ID": "generated id",
@@ -340,6 +354,7 @@ Use this endpoint to create a new company.
 ## Create Team
 
 > POST input
+
 ```json
 {
 	"CID": "companyID",
@@ -349,6 +364,7 @@ Use this endpoint to create a new company.
 ```
 
 > Call returns
+
 ```json
 {
 	"CID": "companyID",
@@ -366,6 +382,7 @@ Use this endpoint to create a new team.
 ## Create, Update User
 
 > Post input
+
 ```json
 {
 	"TID": "team ID",
@@ -380,6 +397,7 @@ Use this endpoint to create a new team.
 ```
 
 > Call returns
+
 ```json
 {
 	"TID": "team ID",
@@ -402,6 +420,7 @@ Use this endpoint to create or update a new user. Empty ID fields creates a new 
 ## Create Product
 
 > POST input
+
 ```json
 {
 	"TID": "team ID",
@@ -427,6 +446,7 @@ Use this endpoint to create new product.
 ## Create, Update Module
 
 > POST input
+
 ```json
 {
 	"PID": "some-id",
@@ -438,6 +458,7 @@ Use this endpoint to create new product.
 ```
 
 > Call returns
+
 ```json
 {
 	"PID": "some-id",
@@ -456,6 +477,7 @@ Use this endpoint to create or update a new module. Empty ID fields creates a ne
 ## Send Invite
 
 > POST Input
+
 ```json
 [
     {
@@ -475,6 +497,7 @@ Use this endpoint to send invitation to new user. Requester must be a manager
 ## Get Invite
 
 > Call returns
+
 ```json
 {
   "TID": "teamID",
@@ -505,6 +528,7 @@ Use this endpoint to handle an invitation accepted by a user.
 ## Put Session
 
 > POST Input
+
 ```json
 {
   "Date": "some-date",
@@ -523,6 +547,7 @@ Use this endpoint to put a new session. This is an internal package funciton.
 ## Put Image
 
 > POST input
+
 ```json
 {
   "body": "[]byte",
