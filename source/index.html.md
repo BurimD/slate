@@ -62,17 +62,17 @@ language_tabs:
 
 ```json
 {
-	"TID": "b43oiie44tl41lagpvcg",
-	"ID": "b43oiie44tl41lagpveg",
-	"CID": "b41v1ve44tl62gbtoeug",
-	"Email": "buriderveni@gmail.com",
-	"Name": "Burim",
-	"LastName": "Derveni",
-	"Image": "Some image",
-	"Status": "accepted",
-	"Performance": 40,
-	"Sessions": 1,
-	"Manager": false
+  "TID": "b4ko2l2a081gv2vfaitg",
+  "ID": "KIhl1ZKGkNgEnfpELm50kpPMoNf1",
+  "CID": "b4ko2kqa081gv2vfait0",
+  "Email": "email",
+  "Name": "John",
+  "LastName": "Doe",
+  "Image": "imgUrl",
+  "Performance": 0,
+  "Sessions": 0,
+  "Manager": true,
+  "TeamName": "OraiDemo"
 }
 ```
 
