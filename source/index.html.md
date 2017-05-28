@@ -56,7 +56,7 @@ language_tabs:
 
 # Endpoints
 
-## Profile Settings (View 11)
+## Profile Settings
 
 > Call returns
 
@@ -387,7 +387,7 @@ Use this endpoint to create a new team.
 {
 	"TID": "team ID",
 	"CID": "CompanyID",
-	"Email": "some email",
+	"Email": "some email. Do not send for current user. Will get 400",
 	"Name": "some-name",
 	"LastName": "some-lastname",
 	"Image": "some-image",
@@ -413,6 +413,7 @@ Use this endpoint to create a new team.
 }
 ```
 
+When updating current User do not send an email Field.
 Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid`

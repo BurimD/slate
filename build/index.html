@@ -273,7 +273,7 @@
 
 <h1 id="endpoints">Endpoints</h1>
 
-<h2 id="profile-settings-view-11">Profile Settings (View 11)</h2>
+<h2 id="profile-settings">Profile Settings</h2>
 
 <blockquote>
 <p>Call returns</p>
@@ -585,7 +585,7 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"TID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team ID"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"CID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CompanyID"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some email"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some email. Do not send for current user. Will get 400"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-lastname"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="p">,</span><span class="w">
@@ -609,7 +609,8 @@
     </span><span class="s2">"Manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bool manager"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.</p>
+<p>When updating current User do not send an email Field.
+Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid</code></p>
 
