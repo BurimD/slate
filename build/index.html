@@ -609,8 +609,8 @@
     </span><span class="s2">"Manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bool manager"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>When updating current User do not send an email Field.
-Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.</p>
+<p>This endpoitn is used jsut to create a new user. All the fields must be filled.
+Use this endpoint to create a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid</code></p>
 
@@ -768,6 +768,12 @@ Use this endpoint to create or update a new user. Empty ID fields creates a new 
 <p>Use this endpoint to delete a session</p>
 
 <p><code class="prettyprint">GET dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid</code></p>
+
+<h2 id="delete-invite">Delete Invite</h2>
+
+<p>Use this endpoint to delete an invite.</p>
+
+<p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/uid/mid/sessionid</code></p>
 
       </div>
       <div class="dark-box">

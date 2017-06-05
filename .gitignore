@@ -21,3 +21,5 @@ tmp
 _yardoc
 doc/
 .idea/
+
+authServer.py
