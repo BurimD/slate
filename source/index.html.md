@@ -412,9 +412,8 @@ Use this endpoint to create a new team.
 	"Manager": "bool manager"
 }
 ```
-
-When updating current User do not send an email Field.
-Use this endpoint to create or update a new user. Empty ID fields creates a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
+This endpoitn is used jsut to create a new user. All the fields must be filled.
+Use this endpoint to create a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid`
 
@@ -583,3 +582,9 @@ Use this endpoint to delete a module. All sessions under member removed.
 Use this endpoint to delete a session
 
 `GET dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid`
+
+## Delete Invite
+
+Use this endpoint to delete an invite.
+
+`GET http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/uid/mid/sessionid`
