@@ -273,7 +273,7 @@
 
 <h1 id="endpoints">Endpoints</h1>
 
-<h2 id="profile-settings">Profile Settings</h2>
+<h2 id="user-settings">User Settings</h2>
 
 <blockquote>
 <p>Call returns</p>
@@ -292,11 +292,11 @@
   </span><span class="s2">"TeamName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OraiDemo"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to get profile settings for a user.</p>
+<p>Get user profile.</p>
 
 <p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/getUser/tid/uid/sessionid</code></p>
 
-<h2 id="individual-user-dashboard-with-sessions">Individual User Dashboard with Sessions</h2>
+<h2 id="user-sessions">User Sessions</h2>
 
 <blockquote>
 <p>Call returns</p>
@@ -317,7 +317,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to get individual user dashboard including sessions</p>
+<p>Get user sessions.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoratio.com/v1_5/getUserSessions/tid/uid/sessionid</code></p>
 
@@ -353,7 +353,7 @@
   </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"selectTeam"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to get team settings. Requester must be a manager.</p>
+<p>Get team settings. Requester must be team manager.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/getTeamSettings/cid/tid/uid/sessionid</code></p>
 
@@ -376,11 +376,11 @@
   </span><span class="s2">"TID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b450it644tl7g9hmodr0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to team results for a manager. Requester must be a manager</p>
+<p>Get team results. User must be team manager.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoratio.com/sales/v1_5/getTeam/cid/tid/uid/sessionid</code></p>
 
-<h2 id="manager-products">Manager Products</h2>
+<h2 id="products">Products</h2>
 
 <blockquote>
 <p>Call returns</p>
@@ -429,7 +429,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to get products and all corresponding modules under manager</p>
+<p>Get products and modules. Requester must be a manager.</p>
 
 <p><code class="prettyprint">GET sdev.tryoration.com/v1_5/sales/getManagerProducts/cid/uid/sessionid</code></p>
 
@@ -480,39 +480,9 @@
   </span><span class="s2">"Prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to get information about a session.</p>
+<p>Get session.</p>
 
 <p><code class="prettyprint">GET sdev.tryoration.com/v1_5/sales/getSesion/uid/id/sessionid</code></p>
-
-<h2 id="edit-module">Edit Module</h2>
-
-<blockquote>
-<p>POST input</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"PID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product-id"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module-id"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Name "</span><span class="p">:</span><span class="w"> </span><span class="s2">"some - name "</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Instructions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"string1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"string"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"Keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"word1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"word2"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"TargetTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Call returns</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"PID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product-id"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module-id"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Name "</span><span class="p">:</span><span class="w"> </span><span class="s2">"some - name "</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Instructions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"string1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"string"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"Keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"word1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"word2"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"TargetTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Use this endpoint to edit a module. Make sure to fill all the fields of the module. This will remove the old module and replace it</p>
-
-<p><code class="prettyprint">POST http:/sdev.tryoration.com/sales/v1_5/postModule/uid/sessionid</code></p>
 
 <h2 id="individual-session-performance">Individual Session Performance</h2>
 
@@ -523,7 +493,7 @@
 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to get individual user performance.</p>
+<p>Get session information for user.</p>
 
 <p><code class="prettyprint">GET http://tryoration.com/sales/v1_5/getsession/uid/sid/sessionid</code></p>
 
@@ -548,7 +518,7 @@
     </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to create a new company.</p>
+<p>Create company. Name, Location required.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putCompany/sessionid</code></p>
 
@@ -573,11 +543,11 @@
     </span><span class="s2">"ManagerID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to create a new team.</p>
+<p>Create new team. CID, Name, ManagerID required.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putTeam/sessionid</code></p>
 
-<h2 id="create-update-user">Create, Update User</h2>
+<h2 id="create-user">Create User</h2>
 
 <blockquote>
 <p>Post input</p>
@@ -609,8 +579,7 @@
     </span><span class="s2">"Manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bool manager"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoitn is used jsut to create a new user. All the fields must be filled.
-Use this endpoint to create a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.</p>
+<p>Create new user. TID, CID, Email, Name, LastName reuqired. Use this endpoint to create new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid</code></p>
 
@@ -637,11 +606,11 @@ Use this endpoint to create a new user. No user created if invite does not exist
 </code></p>
 </blockquote>
 
-<p>Use this endpoint to create new product.</p>
+<p>Create new product. TID, Name required.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putProduct/sessionid</code></p>
 
-<h2 id="create-update-module">Create, Update Module</h2>
+<h2 id="create-module">Create Module</h2>
 
 <blockquote>
 <p>POST input</p>
@@ -666,7 +635,7 @@ Use this endpoint to create a new user. No user created if invite does not exist
     </span><span class="s2">"TargetTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to create or update a new module. Empty ID fields creates a new module. Requester must e manager.</p>
+<p>Create module. All but ID field required.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putModule/cid/tid/sessionid</code></p>
 
@@ -685,7 +654,7 @@ Use this endpoint to create a new user. No user created if invite does not exist
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to send invitation to new user. Requester must be a manager</p>
+<p>Send invitation to new user. TID, Email, TeamName, CID, ManagerName required. User must be a manager.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/sendInvite/sessionid</code></p>
 
@@ -709,7 +678,7 @@ Use this endpoint to create a new user. No user created if invite does not exist
 </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invitation expired"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to handle an invitation accepted by a user.</p>
+<p>Handle invitations accepted by user.</p>
 
 <p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/id</code></p>
 
@@ -729,7 +698,7 @@ Use this endpoint to create a new user. No user created if invite does not exist
   </span><span class="s2">"PID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product ID"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Use this endpoint to put a new session. This is an internal package funciton.</p>
+<p>Create new session. Internal library function.</p>
 
 <h2 id="put-image">Put Image</h2>
 
@@ -741,39 +710,185 @@ Use this endpoint to create a new user. No user created if invite does not exist
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg|image/png|image/bmp"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Enter an image for a user. user must enter an image for each team he joins.</p>
+<p>Enter image for user. Image needed for each team.</p>
 
-<p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/uid</code></p>
+<p><code class="prettyprint">GET http://sdev.tryoration.com/v1_5/sales/putImage/tid/uid</code></p>
+
+<h2 id="update-company">Update Company</h2>
+
+<blockquote>
+<p>POST input</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-location"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Call returns</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcomapny ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-location"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update Company. Name, Location, WatsonID required. Old object replaced.</p>
+
+<p><code class="prettyprint">POST http:/sdev.tryoration.com/sales/updateCompany/sessionid</code></p>
+
+<h2 id="update-team">Update Team</h2>
+
+<blockquote>
+<p>POST input</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"CID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"companyID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ManagerID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-id"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Call returns</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"CID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"companyID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ManagerID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update Team. All attributes required. Old object replaced.</p>
+
+<p><code class="prettyprint">POST http:/sdev.tryoration.com/sales/updateTeam/sessionid</code></p>
+
+<h2 id="update-user">Update User</h2>
+
+<blockquote>
+<p>POST input</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"TID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CompanyID"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"userID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some email. Do not send for current user. Will get 400"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-lastname"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Performance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Sessions"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Call returns</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"TID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some email"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-lastname"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Performance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int perf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Sessions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some sessions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bool manager"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update User. TID, ID, CID, Name, LastName required. Old object replaced.</p>
+
+<p><code class="prettyprint">POST http:/sdev.tryoration.com/sales/updateUser/sessionid</code></p>
+
+<h2 id="update-product">Update Product</h2>
+
+<blockquote>
+<p>POST input</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"TID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team ID"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some-image"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Call returns
+<code class="prettyprint">json
+{
+    &quot;ID&quot;: &quot;product ID&quot;,
+  &quot;TID&quot;: &quot;team ID&quot;,
+    &quot;Name&quot;: &quot;some-name&quot;,
+    &quot;Image&quot;: &quot;some-image&quot;
+}
+</code></p>
+</blockquote>
+
+<p>Update Product. TID, ID Name required. Old object replaced.</p>
+
+<p><code class="prettyprint">POST http:/sdev.tryoration.com/sales/updateProduct/sessionid</code></p>
+
+<h2 id="update-module">Update Module</h2>
+
+<blockquote>
+<p>POST input</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"PID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product-id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module-id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name "</span><span class="p">:</span><span class="w"> </span><span class="s2">"some - name "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Instructions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"string1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"string"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"word1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"word2"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"TargetTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Call returns</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"PID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product-id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module-id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name "</span><span class="p">:</span><span class="w"> </span><span class="s2">"some - name "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Instructions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"string1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"string"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"word1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"word2"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"TargetTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update module. All fields required.</p>
+
+<p><code class="prettyprint">POST http:/sdev.tryoration.com/sales/updateModule/cid/tid/sessionid</code></p>
 
 <h2 id="delete-product">Delete Product</h2>
 
-<p>Use this endpoint to delete product. All modules under product removed.</p>
+<p>Delete product. All modules under product removed.</p>
 
-<p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/deleteProduct/cid/tid/pid/uid/sessionid</code></p>
+<p><code class="prettyprint">DELETE http://dev.oraiapp.com/v1_5/sales/deleteProduct/cid/tid/pid/uid/sessionid</code></p>
 
 <h2 id="delete-module">Delete Module</h2>
 
-<p>Use this endpoint to delete a module.</p>
+<p>Delete module.</p>
 
-<p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/deleteModule/cid/tid/pid/mid/uid/sessionid</code></p>
+<p><code class="prettyprint">DELETE http://dev.oraiapp.com/v1_5/sales/deleteModule/cid/tid/pid/mid/uid/sessionid</code></p>
 
 <h2 id="delete-member">Delete Member</h2>
 
-<p>Use this endpoint to delete a module. All sessions under member removed.</p>
+<p>Delete member. All sessions under member removed.</p>
 
-<p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/deleteMember/cid/tid/uid/mid/sessionid</code></p>
+<p><code class="prettyprint">DELETE http://dev.oraiapp.com/v1_5/sales/deleteMember/cid/tid/uid/mid/sessionid</code></p>
 
 <h2 id="delete-session">Delete Session</h2>
 
-<p>Use this endpoint to delete a session</p>
+<p>Delete session.</p>
 
-<p><code class="prettyprint">GET dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid</code></p>
+<p><code class="prettyprint">DELETE dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid</code></p>
 
 <h2 id="delete-invite">Delete Invite</h2>
 
-<p>Use this endpoint to delete an invite.</p>
+<p>Delete invite.</p>
 
-<p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/uid/mid/sessionid</code></p>
+<p><code class="prettyprint">DELETE http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/iid/mid/sessionid</code></p>
 
       </div>
       <div class="dark-box">

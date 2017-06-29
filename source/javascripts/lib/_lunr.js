@@ -450,9 +450,9 @@
   }
 
   /**
-   * Inserts a new value at a position in a vector.
+   * Inserts a new Value at a position in a vector.
    *
-   * @param {Number} The index at which to insert a value.
+   * @param {Number} The index at which to insert a Value.
    * @param {Object} The object to insert in the vector.
    * @memberOf Vector.
    */
@@ -546,7 +546,7 @@
    */
 
   /**
-   * lunr.SortedSets are used to maintain an array of uniq values in a sorted
+   * lunr.SortedSets are used to maintain an array of uniq Values in a sorted
    * order.
    *
    * @constructor
@@ -864,7 +864,7 @@
    * in the index.
    *
    * An optional boost param can be passed to affect how much tokens in this field
-   * rank in search results, by default the boost value is 1.
+   * rank in search results, by default the boost Value is 1.
    *
    * Fields should be added before any documents are added to the index, fields
    * that are added after documents are added to the index will only apply to new
@@ -958,7 +958,7 @@
    * To make sure documents no longer show up in search results they can be
    * removed from the index using this method.
    *
-   * The document passed only needs to have the same ref property value as the
+   * The document passed only needs to have the same ref property Value as the
    * document that was added to the index, they could be completely different
    * objects.
    *
@@ -1205,7 +1205,7 @@
    */
 
   /**
-   * lunr.Store is a simple key-value store used for storing sets of tokens for
+   * lunr.Store is a simple key-Value store used for storing sets of tokens for
    * documents stored in index.
    *
    * @constructor
@@ -1270,7 +1270,7 @@
   }
 
   /**
-   * Removes the value for a key in the store.
+   * Removes the Value for a key in the store.
    *
    * @param {Object} id The id to remove from the store.
    * @memberOf Store
@@ -1901,9 +1901,9 @@
     }
   }(this, function () {
     /**
-     * Just return a value to define the module export.
+     * Just return a Value to define the module export.
      * This example returns an object, but the module
-     * can return a function as the exported value.
+     * can return a function as the exported Value.
      */
     return lunr
   }))

@@ -124,13 +124,13 @@
             // Adds a hash to the page url, to maintain history, when scrolling to a TOC item
             scrollHistory: false,
 
-            // **hashGenerator**: How the hash value (the anchor segment of the URL, following the
+            // **hashGenerator**: How the hash Value (the anchor segment of the URL, following the
             // # character) will be generated.
             //
             // "compact" (default) - #CompressesEverythingTogether
             // "pretty" - #looks-like-a-nice-url-and-is-easily-readable
             // function(text, element){} - Your own hash generation function that accepts the text as an
-            // argument, and returns the hash value.
+            // argument, and returns the hash Value.
             hashGenerator: "compact",
 
             // **highlightDefault**: Accepts a boolean: true or false
@@ -388,7 +388,7 @@
             hashValue = this._generateHashValue(arr, self, index);
 
             // ADDED BY ROBERT
-            // actually add the hash value to the element's id
+            // actually add the hash Value to the element's id
             // self.attr("id", "link-" + hashValue);
 
             // Appends a list item HTML element to the last unordered list HTML element found within the HTML element calling the plugin
@@ -421,7 +421,7 @@
 
         // _generateHashValue
         // ------------------
-        //      Generates the hash value that will be used to refer to each item.
+        //      Generates the hash Value that will be used to refer to each item.
         _generateHashValue: function(arr, self, index) {
 
             var hashValue = "",
@@ -463,7 +463,7 @@
             // add the index if we need to
             if (arr.length) { hashValue += ""+index; }
 
-            // return the value
+            // return the Value
             return hashValue;
 
         },

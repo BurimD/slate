@@ -98,9 +98,9 @@
     // otherwise we'll modify the options hash on the prototype that we're
     // inheriting from
     basePrototype.options = $.widget.extend( {}, basePrototype.options );
-    $.each( prototype, function( prop, value ) {
-      if ( !$.isFunction( value ) ) {
-        proxiedPrototype[ prop ] = value;
+    $.each( prototype, function( prop, Value ) {
+      if ( !$.isFunction( Value ) ) {
+        proxiedPrototype[ prop ] = Value;
         return;
       }
       proxiedPrototype[ prop ] = (function() {
@@ -118,7 +118,7 @@
           this._super = _super;
           this._superApply = _superApply;
 
-          returnValue = value.apply( this, arguments );
+          returnValue = Value.apply( this, arguments );
 
           this._super = __super;
           this._superApply = __superApply;
@@ -168,20 +168,20 @@
         inputIndex = 0,
         inputLength = input.length,
         key,
-        value;
+        Value;
     for ( ; inputIndex < inputLength; inputIndex++ ) {
       for ( key in input[ inputIndex ] ) {
-        value = input[ inputIndex ][ key ];
-        if ( input[ inputIndex ].hasOwnProperty( key ) && value !== undefined ) {
+        Value = input[ inputIndex ][ key ];
+        if ( input[ inputIndex ].hasOwnProperty( key ) && Value !== undefined ) {
           // Clone objects
-          if ( $.isPlainObject( value ) ) {
+          if ( $.isPlainObject( Value ) ) {
             target[ key ] = $.isPlainObject( target[ key ] ) ?
-                $.widget.extend( {}, target[ key ], value ) :
+                $.widget.extend( {}, target[ key ], Value ) :
               // Don't extend strings, arrays, etc. with objects
-                $.widget.extend( {}, value );
+                $.widget.extend( {}, Value );
             // Copy everything else by reference
           } else {
-            target[ key ] = value;
+            target[ key ] = Value;
           }
         }
       }
@@ -325,7 +325,7 @@
       return this.element;
     },
 
-    option: function( key, value ) {
+    option: function( key, Value ) {
       var options = key,
           parts,
           curOption,
@@ -351,12 +351,12 @@
           if ( arguments.length === 1 ) {
             return curOption[ key ] === undefined ? null : curOption[ key ];
           }
-          curOption[ key ] = value;
+          curOption[ key ] = Value;
         } else {
           if ( arguments.length === 1 ) {
             return this.options[ key ] === undefined ? null : this.options[ key ];
           }
-          options[ key ] = value;
+          options[ key ] = Value;
         }
       }
 
@@ -373,15 +373,15 @@
 
       return this;
     },
-    _setOption: function( key, value ) {
-      this.options[ key ] = value;
+    _setOption: function( key, Value ) {
+      this.options[ key ] = Value;
 
       if ( key === "disabled" ) {
         this.widget()
-            .toggleClass( this.widgetFullName + "-disabled", !!value );
+            .toggleClass( this.widgetFullName + "-disabled", !!Value );
 
         // If the widget is becoming disabled, then nothing is interactive
-        if ( value ) {
+        if ( Value ) {
           this.hoverable.removeClass( "ui-state-hover" );
           this.focusable.removeClass( "ui-state-focus" );
         }

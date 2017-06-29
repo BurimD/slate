@@ -201,7 +201,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 
   for ( ; i < length; i++ ) {
 
-    // Only deal with non-null/undefined values
+    // Only deal with non-null/undefined Values
     if ( ( options = arguments[ i ] ) != null ) {
 
       // Extend the base object
@@ -229,7 +229,7 @@ jQuery.extend = jQuery.fn.extend = function() {
           // Never move original objects, clone them
           target[ name ] = jQuery.extend( deep, clone, copy );
 
-        // Don't bring in undefined values
+        // Don't bring in undefined Values
         } else if ( copy !== undefined ) {
           target[ name ] = copy;
         }
@@ -278,7 +278,7 @@ jQuery.extend( {
   isPlainObject: function( obj ) {
 
     // Not plain objects:
-    // - Any object or value whose internal [[Class]] property is not "[object Object]"
+    // - Any object or Value whose internal [[Class]] property is not "[object Object]"
     // - DOM nodes
     // - window
     if ( jQuery.type( obj ) !== "object" || obj.nodeType || jQuery.isWindow( obj ) ) {
@@ -436,28 +436,28 @@ jQuery.extend( {
 
   // arg is for internal usage only
   map: function( elems, callback, arg ) {
-    var length, value,
+    var length, Value,
       i = 0,
       ret = [];
 
-    // Go through the array, translating each of the items to their new values
+    // Go through the array, translating each of the items to their new Values
     if ( isArrayLike( elems ) ) {
       length = elems.length;
       for ( ; i < length; i++ ) {
-        value = callback( elems[ i ], i, arg );
+        Value = callback( elems[ i ], i, arg );
 
-        if ( value != null ) {
-          ret.push( value );
+        if ( Value != null ) {
+          ret.push( Value );
         }
       }
 
     // Go through every key on the object,
     } else {
       for ( i in elems ) {
-        value = callback( elems[ i ], i, arg );
+        Value = callback( elems[ i ], i, arg );
 
-        if ( value != null ) {
-          ret.push( value );
+        if ( Value != null ) {
+          ret.push( Value );
         }
       }
     }
@@ -617,14 +617,14 @@ var i,
   // http://www.w3.org/TR/css3-selectors/#whitespace
   whitespace = "[\\x20\\t\\r\\n\\f]",
 
-  // http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
+  // http://www.w3.org/TR/CSS21/syndata.html#Value-def-identifier
   identifier = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",
 
   // Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
   attributes = "\\[" + whitespace + "*(" + identifier + ")(?:" + whitespace +
     // Operator (capture 2)
     "*([*^$|!~]?=)" + whitespace +
-    // "Attribute values must be CSS identifiers [capture 5] or strings [capture 3 or capture 4]"
+    // "Attribute Values must be CSS identifiers [capture 5] or strings [capture 3 or capture 4]"
     "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + identifier + "))|)" + whitespace +
     "*\\]",
 
@@ -865,7 +865,7 @@ function Sizzle( selector, context, results, seed ) {
 }
 
 /**
- * Create key-value caches of limited size
+ * Create key-Value caches of limited size
  * @returns {function(string, object)} Returns the Object data after storing it on itself with
  *  property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
  *  deleting the oldest entry
@@ -873,13 +873,13 @@ function Sizzle( selector, context, results, seed ) {
 function createCache() {
   var keys = [];
 
-  function cache( key, value ) {
+  function cache( key, Value ) {
     // Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
     if ( keys.push( key + " " ) > Expr.cacheLength ) {
       // Only keep the most recent entries
       delete cache[ keys.shift() ];
     }
-    return (cache[ key + " " ] = value);
+    return (cache[ key + " " ] = Value);
   }
   return cache;
 }
@@ -1004,7 +1004,7 @@ function createPositionalPseudo( fn ) {
 /**
  * Checks a node for validity as a Sizzle context
  * @param {Element|Object=} context
- * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
+ * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy Value
  */
 function testContext( context ) {
   return context && typeof context.getElementsByTagName !== "undefined" && context;
@@ -1113,7 +1113,7 @@ setDocument = Sizzle.setDocument = function( node ) {
       return function( elem ) {
         var node = typeof elem.getAttributeNode !== "undefined" &&
           elem.getAttributeNode("id");
-        return node && node.value === attrId;
+        return node && node.Value === attrId;
       };
     };
   }
@@ -1194,9 +1194,9 @@ setDocument = Sizzle.setDocument = function( node ) {
       }
 
       // Support: IE8
-      // Boolean attributes and "value" are not treated correctly
+      // Boolean attributes and "Value" are not treated correctly
       if ( !div.querySelectorAll("[selected]").length ) {
-        rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
+        rbuggyQSA.push( "\\[" + whitespace + "*(?:Value|" + booleans + ")" );
       }
 
       // Support: Chrome<29, Android<4.4, Safari<7.0+, iOS<7.0+, PhantomJS<1.9.8+
@@ -1455,7 +1455,7 @@ Sizzle.attr = function( elem, name ) {
     support.attributes || !documentIsHTML ?
       elem.getAttribute( name ) :
       (val = elem.getAttributeNode(name)) && val.specified ?
-        val.value :
+        val.Value :
         null;
 };
 
@@ -1497,7 +1497,7 @@ Sizzle.uniqueSort = function( results ) {
 };
 
 /**
- * Utility function for retrieving the text value of an array of DOM nodes
+ * Utility function for retrieving the text Value of an array of DOM nodes
  * @param {Array|Element} elem
  */
 getText = Sizzle.getText = function( elem ) {
@@ -1555,7 +1555,7 @@ Expr = Sizzle.selectors = {
     "ATTR": function( match ) {
       match[1] = match[1].replace( runescape, funescape );
 
-      // Move the given value to match[3] whether quoted or unquoted
+      // Move the given Value to match[3] whether quoted or unquoted
       match[3] = ( match[3] || match[4] || match[5] || "" ).replace( runescape, funescape );
 
       if ( match[2] === "~=" ) {
@@ -1884,14 +1884,14 @@ Expr = Sizzle.selectors = {
     }),
 
     // "Whether an element is represented by a :lang() selector
-    // is based solely on the element's language value
+    // is based solely on the element's language Value
     // being equal to the identifier C,
     // or beginning with the identifier C immediately followed by "-".
-    // The matching of C against the element's language value is performed case-insensitively.
+    // The matching of C against the element's language Value is performed case-insensitively.
     // The identifier C does not have to be a valid language name."
     // http://www.w3.org/TR/selectors/#lang-pseudo
     "lang": markFunction( function( lang ) {
-      // lang value must be a valid identifier
+      // lang Value must be a valid identifier
       if ( !ridentifier.test(lang || "") ) {
         Sizzle.error( "unsupported lang: " + lang );
       }
@@ -1989,7 +1989,7 @@ Expr = Sizzle.selectors = {
         elem.type === "text" &&
 
         // Support: IE<8
-        // New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
+        // New HTML5 attribute Values (e.g., "search") appear with elem.type === "text"
         ( (attr = elem.getAttribute("type")) == null || attr.toLowerCase() === "text" );
     },
 
@@ -2085,7 +2085,7 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
     if ( (match = rcombinators.exec( soFar )) ) {
       matched = match.shift();
       tokens.push({
-        value: matched,
+        Value: matched,
         // Cast descendant combinators to space
         type: match[0].replace( rtrim, " " )
       });
@@ -2098,7 +2098,7 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
         (match = preFilters[ type ]( match ))) ) {
         matched = match.shift();
         tokens.push({
-          value: matched,
+          Value: matched,
           type: type,
           matches: match
         });
@@ -2127,7 +2127,7 @@ function toSelector( tokens ) {
     len = tokens.length,
     selector = "";
   for ( ; i < len; i++ ) {
-    selector += tokens[i].value;
+    selector += tokens[i].Value;
   }
   return selector;
 }
@@ -2370,7 +2370,7 @@ function matcherFromTokens( tokens ) {
           i > 1 && elementMatcher( matchers ),
           i > 1 && toSelector(
             // If the preceding token was a descendant combinator, insert an implicit any-element `*`
-            tokens.slice( 0, i - 1 ).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
+            tokens.slice( 0, i - 1 ).concat({ Value: tokens[ i - 2 ].type === " " ? "*" : "" })
           ).replace( rtrim, "$1" ),
           matcher,
           i < j && matcherFromTokens( tokens.slice( i, j ) ),
@@ -2467,7 +2467,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
             }
           }
 
-          // Discard index placeholder values to get only actual matches
+          // Discard index placeholder Values to get only actual matches
           setMatched = condense( setMatched );
         }
 
@@ -2561,7 +2561,7 @@ select = Sizzle.select = function( selector, context, results, seed ) {
         context = context.parentNode;
       }
 
-      selector = selector.slice( tokens.shift().value.length );
+      selector = selector.slice( tokens.shift().Value.length );
     }
 
     // Fetch a seed set for right-to-left matching
@@ -2640,13 +2640,13 @@ if ( !assert(function( div ) {
 }
 
 // Support: IE<9
-// Use defaultValue in place of getAttribute("value")
+// Use defaultValue in place of getAttribute("Value")
 if ( !support.attributes || !assert(function( div ) {
   div.innerHTML = "<input/>";
-  div.firstChild.setAttribute( "value", "" );
-  return div.firstChild.getAttribute( "value" ) === "";
+  div.firstChild.setAttribute( "Value", "" );
+  return div.firstChild.getAttribute( "Value" ) === "";
 }) ) {
-  addHandle( "value", function( elem, name, isXML ) {
+  addHandle( "Value", function( elem, name, isXML ) {
     if ( !isXML && elem.nodeName.toLowerCase() === "input" ) {
       return elem.defaultValue;
     }
@@ -2663,7 +2663,7 @@ if ( !assert(function( div ) {
     if ( !isXML ) {
       return elem[ name ] === true ? name.toLowerCase() :
           (val = elem.getAttributeNode( name )) && val.specified ?
-          val.value :
+          val.Value :
         null;
     }
   });
@@ -3127,9 +3127,9 @@ function createOptions( options ) {
  *
  *  once:     will ensure the callback list can only be fired once (like a Deferred)
  *
- *  memory:     will keep track of previous values and will call any callback added
+ *  memory:     will keep track of previous Values and will call any callback added
  *          after the list has been fired right away with the latest "memorized"
- *          values (like a Deferred)
+ *          Values (like a Deferred)
  *
  *  unique:     will ensure a callback can only be added once (no duplicate in the list)
  *
@@ -3147,7 +3147,7 @@ jQuery.Callbacks = function( options ) {
   var // Flag to know if list is currently firing
     firing,
 
-    // Last fire value for non-forgettable lists
+    // Last fire Value for non-forgettable lists
     memory,
 
     // Flag to know if list was already fired
@@ -3278,7 +3278,7 @@ jQuery.Callbacks = function( options ) {
 
       // Disable .fire and .add
       // Abort any current/pending executions
-      // Clear all callbacks and values
+      // Clear all callbacks and Values
       disable: function() {
         locked = queue = [];
         list = memory = "";
@@ -3440,15 +3440,15 @@ jQuery.extend( {
       // If resolveValues consist of only a single Deferred, just use that.
       deferred = remaining === 1 ? subordinate : jQuery.Deferred(),
 
-      // Update function for both resolve and progress values
-      updateFunc = function( i, contexts, values ) {
-        return function( value ) {
+      // Update function for both resolve and progress Values
+      updateFunc = function( i, contexts, Values ) {
+        return function( Value ) {
           contexts[ i ] = this;
-          values[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
-          if ( values === progressValues ) {
-            deferred.notifyWith( contexts, values );
+          Values[ i ] = arguments.length > 1 ? slice.call( arguments ) : Value;
+          if ( Values === progressValues ) {
+            deferred.notifyWith( contexts, Values );
           } else if ( !( --remaining ) ) {
-            deferred.resolveWith( contexts, values );
+            deferred.resolveWith( contexts, Values );
           }
         };
       },
@@ -3580,25 +3580,25 @@ jQuery.ready.promise();
 
 
 
-// Multifunctional method to get and set values of a collection
-// The value/s can optionally be executed if it's a function
-var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
+// Multifunctional method to get and set Values of a collection
+// The Value/s can optionally be executed if it's a function
+var access = function( elems, fn, key, Value, chainable, emptyGet, raw ) {
   var i = 0,
     len = elems.length,
     bulk = key == null;
 
-  // Sets many values
+  // Sets many Values
   if ( jQuery.type( key ) === "object" ) {
     chainable = true;
     for ( i in key ) {
       access( elems, fn, i, key[ i ], true, emptyGet, raw );
     }
 
-  // Sets one value
-  } else if ( value !== undefined ) {
+  // Sets one Value
+  } else if ( Value !== undefined ) {
     chainable = true;
 
-    if ( !jQuery.isFunction( value ) ) {
+    if ( !jQuery.isFunction( Value ) ) {
       raw = true;
     }
 
@@ -3606,14 +3606,14 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 
       // Bulk operations run against the entire set
       if ( raw ) {
-        fn.call( elems, value );
+        fn.call( elems, Value );
         fn = null;
 
-      // ...except when executing function values
+      // ...except when executing function Values
       } else {
         bulk = fn;
-        fn = function( elem, key, value ) {
-          return bulk.call( jQuery( elem ), value );
+        fn = function( elem, key, Value ) {
+          return bulk.call( jQuery( elem ), Value );
         };
       }
     }
@@ -3622,8 +3622,8 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
       for ( ; i < len; i++ ) {
         fn(
           elems[ i ], key, raw ?
-          value :
-          value.call( elems[ i ], i, fn( elems[ i ], key ) )
+          Value :
+          Value.call( elems[ i ], i, fn( elems[ i ], key ) )
         );
       }
     }
@@ -3661,19 +3661,19 @@ Data.uid = 1;
 Data.prototype = {
 
   register: function( owner, initial ) {
-    var value = initial || {};
+    var Value = initial || {};
 
     // If it is a node unlikely to be stringify-ed or looped over
     // use plain assignment
     if ( owner.nodeType ) {
-      owner[ this.expando ] = value;
+      owner[ this.expando ] = Value;
 
     // Otherwise secure it in a non-enumerable, non-writable property
     // configurability must be true to allow the property to be
     // deleted with the delete operator
     } else {
       Object.defineProperty( owner, this.expando, {
-        value: value,
+        Value: Value,
         writable: true,
         configurable: true
       } );
@@ -3690,11 +3690,11 @@ Data.prototype = {
     }
 
     // Check if the owner object already has a cache
-    var value = owner[ this.expando ];
+    var Value = owner[ this.expando ];
 
     // If not, create one
-    if ( !value ) {
-      value = {};
+    if ( !Value ) {
+      Value = {};
 
       // We can accept data for non-element nodes in modern browsers,
       // but we should not, see #8335.
@@ -3704,29 +3704,29 @@ Data.prototype = {
         // If it is a node unlikely to be stringify-ed or looped over
         // use plain assignment
         if ( owner.nodeType ) {
-          owner[ this.expando ] = value;
+          owner[ this.expando ] = Value;
 
         // Otherwise secure it in a non-enumerable property
         // configurable must be true to allow the property to be
         // deleted when data is removed
         } else {
           Object.defineProperty( owner, this.expando, {
-            value: value,
+            Value: Value,
             configurable: true
           } );
         }
       }
     }
 
-    return value;
+    return Value;
   },
-  set: function( owner, data, value ) {
+  set: function( owner, data, Value ) {
     var prop,
       cache = this.cache( owner );
 
-    // Handle: [ owner, key, value ] args
+    // Handle: [ owner, key, Value ] args
     if ( typeof data === "string" ) {
-      cache[ data ] = value;
+      cache[ data ] = Value;
 
     // Handle: [ owner, { properties } ] args
     } else {
@@ -3743,22 +3743,22 @@ Data.prototype = {
       this.cache( owner ) :
       owner[ this.expando ] && owner[ this.expando ][ key ];
   },
-  access: function( owner, key, value ) {
+  access: function( owner, key, Value ) {
     var stored;
 
     // In cases where either:
     //
     //   1. No key was specified
-    //   2. A string key was specified, but no value provided
+    //   2. A string key was specified, but no Value provided
     //
     // Take the "read" path and allow the get method to determine
-    // which value to return, respectively either:
+    // which Value to return, respectively either:
     //
     //   1. The entire cache object
     //   2. The data stored at the key
     //
     if ( key === undefined ||
-        ( ( key && typeof key === "string" ) && value === undefined ) ) {
+        ( ( key && typeof key === "string" ) && Value === undefined ) ) {
 
       stored = this.get( owner, key );
 
@@ -3766,17 +3766,17 @@ Data.prototype = {
         stored : this.get( owner, jQuery.camelCase( key ) );
     }
 
-    // When the key is not a string, or both a key and value
+    // When the key is not a string, or both a key and Value
     // are specified, set or extend (existing objects) with either:
     //
     //   1. An object of properties
-    //   2. A key and value
+    //   2. A key and Value
     //
-    this.set( owner, key, value );
+    this.set( owner, key, Value );
 
     // Since the "set" path can have two possible entry points
     // return the expected data based on which path was taken[*]
-    return value !== undefined ? value : key;
+    return Value !== undefined ? Value : key;
   },
   remove: function( owner, key ) {
     var i, name, camel,
@@ -3917,12 +3917,12 @@ jQuery.extend( {
 } );
 
 jQuery.fn.extend( {
-  data: function( key, value ) {
+  data: function( key, Value ) {
     var i, name, data,
       elem = this[ 0 ],
       attrs = elem && elem.attributes;
 
-    // Gets all values
+    // Gets all Values
     if ( key === undefined ) {
       if ( this.length ) {
         data = dataUser.get( elem );
@@ -3948,22 +3948,22 @@ jQuery.fn.extend( {
       return data;
     }
 
-    // Sets multiple values
+    // Sets multiple Values
     if ( typeof key === "object" ) {
       return this.each( function() {
         dataUser.set( this, key );
       } );
     }
 
-    return access( this, function( value ) {
+    return access( this, function( Value ) {
       var data, camelKey;
 
       // The calling jQuery object (element matches) is not empty
       // (and therefore has an element appears at this[ 0 ]) and the
-      // `value` parameter was not undefined. An empty jQuery object
+      // `Value` parameter was not undefined. An empty jQuery object
       // will result in `undefined` for elem = this[ 0 ] which will
       // throw an exception if an attempt to read a data cache is made.
-      if ( elem && value === undefined ) {
+      if ( elem && Value === undefined ) {
 
         // Attempt to get data from the cache
         // with the key as-is
@@ -4008,16 +4008,16 @@ jQuery.fn.extend( {
         // For HTML5 data-* attribute interop, we have to
         // store property names with dashes in a camelCase form.
         // This might not apply to all properties...*
-        dataUser.set( this, camelKey, value );
+        dataUser.set( this, camelKey, Value );
 
         // *... In the case of properties that might _actually_
         // have dashes, we need to also store a copy of that
         // unchanged property.
         if ( key.indexOf( "-" ) > -1 && data !== undefined ) {
-          dataUser.set( this, key, value );
+          dataUser.set( this, key, Value );
         }
       } );
-    }, null, value, arguments.length > 1, null, true );
+    }, null, Value, arguments.length > 1, null, true );
   },
 
   removeData: function( key ) {
@@ -4179,7 +4179,7 @@ var isHidden = function( elem, el ) {
 
 
 
-function adjustCSS( elem, prop, valueParts, tween ) {
+function adjustCSS( elem, prop, ValueParts, tween ) {
   var adjusted,
     scale = 1,
     maxIterations = 20,
@@ -4187,9 +4187,9 @@ function adjustCSS( elem, prop, valueParts, tween ) {
       function() { return tween.cur(); } :
       function() { return jQuery.css( elem, prop, "" ); },
     initial = currentValue(),
-    unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
+    unit = ValueParts && ValueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
 
-    // Starting value computation is required for potential unit mismatches
+    // Starting Value computation is required for potential unit mismatches
     initialInUnit = ( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
       rcssNum.exec( jQuery.css( elem, prop ) );
 
@@ -4199,7 +4199,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
     unit = unit || initialInUnit[ 3 ];
 
     // Make sure we update the tween properties later on
-    valueParts = valueParts || [];
+    ValueParts = ValueParts || [];
 
     // Iteratively approximate from a nonzero starting point
     initialInUnit = +initial || 1;
@@ -4221,13 +4221,13 @@ function adjustCSS( elem, prop, valueParts, tween ) {
     );
   }
 
-  if ( valueParts ) {
+  if ( ValueParts ) {
     initialInUnit = +initialInUnit || +initial || 0;
 
     // Apply relative offset (+=/-=) if specified
-    adjusted = valueParts[ 1 ] ?
-      initialInUnit + ( valueParts[ 1 ] + 1 ) * valueParts[ 2 ] :
-      +valueParts[ 2 ];
+    adjusted = ValueParts[ 1 ] ?
+      initialInUnit + ( ValueParts[ 1 ] + 1 ) * ValueParts[ 2 ] :
+      +ValueParts[ 2 ];
     if ( tween ) {
       tween.unit = unit;
       tween.start = initialInUnit;
@@ -4968,7 +4968,7 @@ jQuery.Event = function( src, props ) {
     this.type = src.type;
 
     // Events bubbling up the document may have been marked as prevented
-    // by a handler lower down the tree; reflect the correct value.
+    // by a handler lower down the tree; reflect the correct Value.
     this.isDefaultPrevented = src.defaultPrevented ||
         src.defaultPrevented === undefined &&
 
@@ -5212,17 +5212,17 @@ function domManip( collection, args, callback, ignored ) {
     i = 0,
     l = collection.length,
     iNoClone = l - 1,
-    value = args[ 0 ],
-    isFunction = jQuery.isFunction( value );
+    Value = args[ 0 ],
+    isFunction = jQuery.isFunction( Value );
 
   // We can't cloneNode fragments that contain checked, in WebKit
   if ( isFunction ||
-      ( l > 1 && typeof value === "string" &&
-        !support.checkClone && rchecked.test( value ) ) ) {
+      ( l > 1 && typeof Value === "string" &&
+        !support.checkClone && rchecked.test( Value ) ) ) {
     return collection.each( function( index ) {
       var self = collection.eq( index );
       if ( isFunction ) {
-        args[ 0 ] = value.call( this, index, self.html() );
+        args[ 0 ] = Value.call( this, index, self.html() );
       }
       domManip( self, args, callback, ignored );
     } );
@@ -5409,16 +5409,16 @@ jQuery.fn.extend( {
     return remove( this, selector );
   },
 
-  text: function( value ) {
-    return access( this, function( value ) {
-      return value === undefined ?
+  text: function( Value ) {
+    return access( this, function( Value ) {
+      return Value === undefined ?
         jQuery.text( this ) :
         this.empty().each( function() {
           if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
-            this.textContent = value;
+            this.textContent = Value;
           }
         } );
-    }, null, value, arguments.length );
+    }, null, Value, arguments.length );
   },
 
   append: function() {
@@ -5482,21 +5482,21 @@ jQuery.fn.extend( {
     } );
   },
 
-  html: function( value ) {
-    return access( this, function( value ) {
+  html: function( Value ) {
+    return access( this, function( Value ) {
       var elem = this[ 0 ] || {},
         i = 0,
         l = this.length;
 
-      if ( value === undefined && elem.nodeType === 1 ) {
+      if ( Value === undefined && elem.nodeType === 1 ) {
         return elem.innerHTML;
       }
 
       // See if we can take a shortcut and just use innerHTML
-      if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
-        !wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
+      if ( typeof Value === "string" && !rnoInnerhtml.test( Value ) &&
+        !wrapMap[ ( rtagName.exec( Value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
-        value = jQuery.htmlPrefilter( value );
+        Value = jQuery.htmlPrefilter( Value );
 
         try {
           for ( ; i < l; i++ ) {
@@ -5505,7 +5505,7 @@ jQuery.fn.extend( {
             // Remove element nodes and prevent memory leaks
             if ( elem.nodeType === 1 ) {
               jQuery.cleanData( getAll( elem, false ) );
-              elem.innerHTML = value;
+              elem.innerHTML = Value;
             }
           }
 
@@ -5516,9 +5516,9 @@ jQuery.fn.extend( {
       }
 
       if ( elem ) {
-        this.empty().append( value );
+        this.empty().append( Value );
       }
-    }, null, value, arguments.length );
+    }, null, Value, arguments.length );
   },
 
   replaceWith: function() {
@@ -5572,7 +5572,7 @@ var iframe,
   elemdisplay = {
 
     // Support: Firefox
-    // We have to pre-define these values for FF (#10227)
+    // We have to pre-define these Values for FF (#10227)
     HTML: "block",
     BODY: "block"
   };
@@ -5597,7 +5597,7 @@ function actualDisplay( name, doc ) {
 }
 
 /**
- * Try to determine the default display value of an element
+ * Try to determine the default display Value of an element
  * @param {String} nodeName
  */
 function defaultDisplay( nodeName ) {
@@ -5653,7 +5653,7 @@ var swap = function( elem, options, callback, args ) {
   var ret, name,
     old = {};
 
-  // Remember the old values, and insert the new ones
+  // Remember the old Values, and insert the new ones
   for ( name in options ) {
     old[ name ] = elem.style[ name ];
     elem.style[ name ] = options[ name ];
@@ -5661,7 +5661,7 @@ var swap = function( elem, options, callback, args ) {
 
   ret = callback.apply( elem, args || [] );
 
-  // Revert the old values
+  // Revert the old Values
   for ( name in options ) {
     elem.style[ name ] = old[ name ];
   }
@@ -5714,7 +5714,7 @@ var documentElement = document.documentElement;
     boxSizingReliableVal = divStyle.width === "4px";
 
     // Support: Android 4.0 - 4.3 only
-    // Some styles come back with percentage values, even though they shouldn't
+    // Some styles come back with percentage Values, even though they shouldn't
     div.style.marginRight = "50%";
     pixelMarginRightVal = divStyle.marginRight === "4px";
 
@@ -5759,7 +5759,7 @@ var documentElement = document.documentElement;
       // Support: Android 2.3
       // Check if div with explicit width and no margin-right incorrectly
       // gets computed margin-right based on width of container. (#3333)
-      // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+      // WebKit Bug 13343 - getComputedStyle returns wrong Value for margin-right
       // This support function is only executed once so no memoizing is needed.
       var ret,
         marginDiv = div.appendChild( document.createElement( "div" ) );
@@ -5802,22 +5802,22 @@ function curCSS( elem, name, computed ) {
     }
 
     // A tribute to the "awesome hack by Dean Edwards"
-    // Android Browser returns percentage for some values,
+    // Android Browser returns percentage for some Values,
     // but width seems to be reliably pixels.
     // This is against the CSSOM draft spec:
-    // http://dev.w3.org/csswg/cssom/#resolved-values
+    // http://dev.w3.org/csswg/cssom/#resolved-Values
     if ( !support.pixelMarginRight() && rnumnonpx.test( ret ) && rmargin.test( name ) ) {
 
-      // Remember the original values
+      // Remember the original Values
       width = style.width;
       minWidth = style.minWidth;
       maxWidth = style.maxWidth;
 
-      // Put in the new values to get a computed value out
+      // Put in the new Values to get a computed Value out
       style.minWidth = style.maxWidth = style.width = ret;
       ret = computed.width;
 
-      // Revert the changed values
+      // Revert the changed Values
       style.width = width;
       style.minWidth = minWidth;
       style.maxWidth = maxWidth;
@@ -5827,7 +5827,7 @@ function curCSS( elem, name, computed ) {
   return ret !== undefined ?
 
     // Support: IE9-11+
-    // IE returns zIndex value as an integer.
+    // IE returns zIndex Value as an integer.
     ret + "" :
     ret;
 }
@@ -5857,7 +5857,7 @@ var
 
   // Swappable if display is none or starts with table
   // except "table", "table-cell", or "table-caption"
-  // See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+  // See here for display Values: https://developer.mozilla.org/en-US/docs/CSS/display
   rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 
   cssShow = { position: "absolute", visibility: "hidden", display: "block" },
@@ -5889,16 +5889,16 @@ function vendorPropName( name ) {
   }
 }
 
-function setPositiveNumber( elem, value, subtract ) {
+function setPositiveNumber( elem, Value, subtract ) {
 
-  // Any relative (+/-) values have already been
+  // Any relative (+/-) Values have already been
   // normalized at this point
-  var matches = rcssNum.exec( value );
+  var matches = rcssNum.exec( Value );
   return matches ?
 
     // Guard against undefined "subtract", e.g., when used as in cssHooks
     Math.max( 0, matches[ 2 ] - ( subtract || 0 ) ) + ( matches[ 3 ] || "px" ) :
-    value;
+    Value;
 }
 
 function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
@@ -5947,8 +5947,8 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 
 function getWidthOrHeight( elem, name, extra ) {
 
-  // Start with offset property, which is equivalent to the border-box value
-  var valueIsBorderBox = true,
+  // Start with offset property, which is equivalent to the border-box Value
+  var ValueIsBorderBox = true,
     val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
     styles = getStyles( elem ),
     isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
@@ -5982,9 +5982,9 @@ function getWidthOrHeight( elem, name, extra ) {
       return val;
     }
 
-    // Check for style in case a browser which returns unreliable values
+    // Check for style in case a browser which returns unreliable Values
     // for getComputedStyle silently falls back to the reliable elem.style
-    valueIsBorderBox = isBorderBox &&
+    ValueIsBorderBox = isBorderBox &&
       ( support.boxSizingReliable() || val === elem.style[ name ] );
 
     // Normalize "", auto, and prepare for extra
@@ -5997,7 +5997,7 @@ function getWidthOrHeight( elem, name, extra ) {
       elem,
       name,
       extra || ( isBorderBox ? "border" : "content" ),
-      valueIsBorderBox,
+      ValueIsBorderBox,
       styles
     )
   ) + "px";
@@ -6005,7 +6005,7 @@ function getWidthOrHeight( elem, name, extra ) {
 
 function showHide( elements, show ) {
   var display, elem, hidden,
-    values = [],
+    Values = [],
     index = 0,
     length = elements.length;
 
@@ -6015,13 +6015,13 @@ function showHide( elements, show ) {
       continue;
     }
 
-    values[ index ] = dataPriv.get( elem, "olddisplay" );
+    Values[ index ] = dataPriv.get( elem, "olddisplay" );
     display = elem.style.display;
     if ( show ) {
 
       // Reset the inline display of this element to learn if it is
       // being hidden by cascaded rules or not
-      if ( !values[ index ] && display === "none" ) {
+      if ( !Values[ index ] && display === "none" ) {
         elem.style.display = "";
       }
 
@@ -6029,7 +6029,7 @@ function showHide( elements, show ) {
       // in a stylesheet to whatever the default browser style is
       // for such an element
       if ( elem.style.display === "" && isHidden( elem ) ) {
-        values[ index ] = dataPriv.access(
+        Values[ index ] = dataPriv.access(
           elem,
           "olddisplay",
           defaultDisplay( elem.nodeName )
@@ -6056,7 +6056,7 @@ function showHide( elements, show ) {
       continue;
     }
     if ( !show || elem.style.display === "none" || elem.style.display === "" ) {
-      elem.style.display = show ? values[ index ] || "" : "none";
+      elem.style.display = show ? Values[ index ] || "" : "none";
     }
   }
 
@@ -6098,13 +6098,13 @@ jQuery.extend( {
   },
 
   // Add in properties whose names you wish to fix before
-  // setting or getting the value
+  // setting or getting the Value
   cssProps: {
     "float": "cssFloat"
   },
 
   // Get and set the style property on a DOM Node
-  style: function( elem, name, value, extra ) {
+  style: function( elem, name, Value, extra ) {
 
     // Don't set styles on text and comment nodes
     if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
@@ -6122,51 +6122,51 @@ jQuery.extend( {
     // Gets hook for the prefixed version, then unprefixed version
     hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
-    // Check if we're setting a value
-    if ( value !== undefined ) {
-      type = typeof value;
+    // Check if we're setting a Value
+    if ( Value !== undefined ) {
+      type = typeof Value;
 
       // Convert "+=" or "-=" to relative numbers (#7345)
-      if ( type === "string" && ( ret = rcssNum.exec( value ) ) && ret[ 1 ] ) {
-        value = adjustCSS( elem, name, ret );
+      if ( type === "string" && ( ret = rcssNum.exec( Value ) ) && ret[ 1 ] ) {
+        Value = adjustCSS( elem, name, ret );
 
         // Fixes bug #9237
         type = "number";
       }
 
-      // Make sure that null and NaN values aren't set (#7116)
-      if ( value == null || value !== value ) {
+      // Make sure that null and NaN Values aren't set (#7116)
+      if ( Value == null || Value !== Value ) {
         return;
       }
 
       // If a number was passed in, add the unit (except for certain CSS properties)
       if ( type === "number" ) {
-        value += ret && ret[ 3 ] || ( jQuery.cssNumber[ origName ] ? "" : "px" );
+        Value += ret && ret[ 3 ] || ( jQuery.cssNumber[ origName ] ? "" : "px" );
       }
 
       // Support: IE9-11+
-      // background-* props affect original clone's values
-      if ( !support.clearCloneStyle && value === "" && name.indexOf( "background" ) === 0 ) {
+      // background-* props affect original clone's Values
+      if ( !support.clearCloneStyle && Value === "" && name.indexOf( "background" ) === 0 ) {
         style[ name ] = "inherit";
       }
 
-      // If a hook was provided, use that value, otherwise just set the specified value
+      // If a hook was provided, use that Value, otherwise just set the specified Value
       if ( !hooks || !( "set" in hooks ) ||
-        ( value = hooks.set( elem, value, extra ) ) !== undefined ) {
+        ( Value = hooks.set( elem, Value, extra ) ) !== undefined ) {
 
-        style[ name ] = value;
+        style[ name ] = Value;
       }
 
     } else {
 
-      // If a hook was provided get the non-computed value from there
+      // If a hook was provided get the non-computed Value from there
       if ( hooks && "get" in hooks &&
         ( ret = hooks.get( elem, false, extra ) ) !== undefined ) {
 
         return ret;
       }
 
-      // Otherwise just get the value from the style object
+      // Otherwise just get the Value from the style object
       return style[ name ];
     }
   },
@@ -6182,17 +6182,17 @@ jQuery.extend( {
     // Try prefixed name followed by the unprefixed name
     hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
-    // If a hook was provided get the computed value from there
+    // If a hook was provided get the computed Value from there
     if ( hooks && "get" in hooks ) {
       val = hooks.get( elem, true, extra );
     }
 
-    // Otherwise, if a way to get the computed value exists, use that
+    // Otherwise, if a way to get the computed Value exists, use that
     if ( val === undefined ) {
       val = curCSS( elem, name, styles );
     }
 
-    // Convert "normal" to computed value
+    // Convert "normal" to computed Value
     if ( val === "normal" && name in cssNormalTransform ) {
       val = cssNormalTransform[ name ];
     }
@@ -6222,7 +6222,7 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
       }
     },
 
-    set: function( elem, value, extra ) {
+    set: function( elem, Value, extra ) {
       var matches,
         styles = extra && getStyles( elem ),
         subtract = extra && augmentWidthOrHeight(
@@ -6233,15 +6233,15 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
           styles
         );
 
-      // Convert to pixels if value adjustment is needed
-      if ( subtract && ( matches = rcssNum.exec( value ) ) &&
+      // Convert to pixels if Value adjustment is needed
+      if ( subtract && ( matches = rcssNum.exec( Value ) ) &&
         ( matches[ 3 ] || "px" ) !== "px" ) {
 
-        elem.style[ name ] = value;
-        value = jQuery.css( elem, name );
+        elem.style[ name ] = Value;
+        Value = jQuery.css( elem, name );
       }
 
-      return setPositiveNumber( elem, value, subtract );
+      return setPositiveNumber( elem, Value, subtract );
     }
   };
 } );
@@ -6276,12 +6276,12 @@ jQuery.each( {
   border: "Width"
 }, function( prefix, suffix ) {
   jQuery.cssHooks[ prefix + suffix ] = {
-    expand: function( value ) {
+    expand: function( Value ) {
       var i = 0,
         expanded = {},
 
         // Assumes a single number if not a string
-        parts = typeof value === "string" ? value.split( " " ) : [ value ];
+        parts = typeof Value === "string" ? Value.split( " " ) : [ Value ];
 
       for ( ; i < 4; i++ ) {
         expanded[ prefix + cssExpand[ i ] + suffix ] =
@@ -6298,8 +6298,8 @@ jQuery.each( {
 } );
 
 jQuery.fn.extend( {
-  css: function( name, value ) {
-    return access( this, function( elem, name, value ) {
+  css: function( name, Value ) {
+    return access( this, function( elem, name, Value ) {
       var styles, len,
         map = {},
         i = 0;
@@ -6315,10 +6315,10 @@ jQuery.fn.extend( {
         return map;
       }
 
-      return value !== undefined ?
-        jQuery.style( elem, name, value ) :
+      return Value !== undefined ?
+        jQuery.style( elem, name, Value ) :
         jQuery.css( elem, name );
-    }, name, value, arguments.length > 1 );
+    }, name, Value, arguments.length > 1 );
   },
   show: function() {
     return showHide( this, true );
@@ -6407,8 +6407,8 @@ Tween.propHooks = {
 
       // Passing an empty string as a 3rd parameter to .css will automatically
       // attempt a parseFloat and fallback to a string if the parse fails.
-      // Simple values such as "10px" are parsed to Float;
-      // complex values such as "rotate(1rad)" are returned as-is.
+      // Simple Values such as "10px" are parsed to Float;
+      // complex Values such as "rotate(1rad)" are returned as-is.
       result = jQuery.css( tween.elem, tween.prop, "" );
 
       // Empty strings, null, undefined and "auto" are converted to 0.
@@ -6479,8 +6479,8 @@ function genFx( type, includeWidth ) {
     i = 0,
     attrs = { height: type };
 
-  // If we include width, step value is 1 to do all cssExpand values,
-  // otherwise step value is 2 to skip over Left and Right
+  // If we include width, step Value is 1 to do all cssExpand Values,
+  // otherwise step Value is 2 to skip over Left and Right
   includeWidth = includeWidth ? 1 : 0;
   for ( ; i < 4 ; i += 2 - includeWidth ) {
     which = cssExpand[ i ];
@@ -6494,13 +6494,13 @@ function genFx( type, includeWidth ) {
   return attrs;
 }
 
-function createTween( value, prop, animation ) {
+function createTween( Value, prop, animation ) {
   var tween,
     collection = ( Animation.tweeners[ prop ] || [] ).concat( Animation.tweeners[ "*" ] ),
     index = 0,
     length = collection.length;
   for ( ; index < length; index++ ) {
-    if ( ( tween = collection[ index ].call( animation, prop, value ) ) ) {
+    if ( ( tween = collection[ index ].call( animation, prop, Value ) ) ) {
 
       // We're done with this property
       return tween;
@@ -6510,7 +6510,7 @@ function createTween( value, prop, animation ) {
 
 function defaultPrefilter( elem, props, opts ) {
   /* jshint validthis: true */
-  var prop, value, toggle, tween, hooks, oldfire, display, checkDisplay,
+  var prop, Value, toggle, tween, hooks, oldfire, display, checkDisplay,
     anim = this,
     orig = {},
     style = elem.style,
@@ -6549,7 +6549,7 @@ function defaultPrefilter( elem, props, opts ) {
     // Make sure that nothing sneaks out
     // Record all 3 overflow attributes because IE9-10 do not
     // change the overflow attribute when overflowX and
-    // overflowY are set to the same value
+    // overflowY are set to the same Value
     opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
 
     // Set display property to inline-block for height/width
@@ -6576,15 +6576,15 @@ function defaultPrefilter( elem, props, opts ) {
 
   // show/hide pass
   for ( prop in props ) {
-    value = props[ prop ];
-    if ( rfxtypes.exec( value ) ) {
+    Value = props[ prop ];
+    if ( rfxtypes.exec( Value ) ) {
       delete props[ prop ];
-      toggle = toggle || value === "toggle";
-      if ( value === ( hidden ? "hide" : "show" ) ) {
+      toggle = toggle || Value === "toggle";
+      if ( Value === ( hidden ? "hide" : "show" ) ) {
 
         // If there is dataShow left over from a stopped hide or show
         // and we are going to proceed with show, we should pretend to be hidden
-        if ( value === "show" && dataShow && dataShow[ prop ] !== undefined ) {
+        if ( Value === "show" && dataShow && dataShow[ prop ] !== undefined ) {
           hidden = true;
         } else {
           continue;
@@ -6592,7 +6592,7 @@ function defaultPrefilter( elem, props, opts ) {
       }
       orig[ prop ] = dataShow && dataShow[ prop ] || jQuery.style( elem, prop );
 
-    // Any non-fx value stops us from restoring the original display value
+    // Any non-fx Value stops us from restoring the original display Value
     } else {
       display = undefined;
     }
@@ -6638,40 +6638,40 @@ function defaultPrefilter( elem, props, opts ) {
       }
     }
 
-  // If this is a noop like .hide().hide(), restore an overwritten display value
+  // If this is a noop like .hide().hide(), restore an overwritten display Value
   } else if ( ( display === "none" ? defaultDisplay( elem.nodeName ) : display ) === "inline" ) {
     style.display = display;
   }
 }
 
 function propFilter( props, specialEasing ) {
-  var index, name, easing, value, hooks;
+  var index, name, easing, Value, hooks;
 
   // camelCase, specialEasing and expand cssHook pass
   for ( index in props ) {
     name = jQuery.camelCase( index );
     easing = specialEasing[ name ];
-    value = props[ index ];
-    if ( jQuery.isArray( value ) ) {
-      easing = value[ 1 ];
-      value = props[ index ] = value[ 0 ];
+    Value = props[ index ];
+    if ( jQuery.isArray( Value ) ) {
+      easing = Value[ 1 ];
+      Value = props[ index ] = Value[ 0 ];
     }
 
     if ( index !== name ) {
-      props[ name ] = value;
+      props[ name ] = Value;
       delete props[ index ];
     }
 
     hooks = jQuery.cssHooks[ name ];
     if ( hooks && "expand" in hooks ) {
-      value = hooks.expand( value );
+      Value = hooks.expand( Value );
       delete props[ name ];
 
       // Not quite $.extend, this won't overwrite existing keys.
       // Reusing 'index' because we have the correct "name"
-      for ( index in value ) {
+      for ( index in Value ) {
         if ( !( index in props ) ) {
-          props[ index ] = value[ index ];
+          props[ index ] = Value[ index ];
           specialEasing[ index ] = easing;
         }
       }
@@ -6798,9 +6798,9 @@ function Animation( elem, properties, options ) {
 
 jQuery.Animation = jQuery.extend( Animation, {
   tweeners: {
-    "*": [ function( prop, value ) {
-      var tween = this.createTween( prop, value );
-      adjustCSS( tween.elem, prop, rcssNum.exec( value ), tween );
+    "*": [ function( prop, Value ) {
+      var tween = this.createTween( prop, Value );
+      adjustCSS( tween.elem, prop, rcssNum.exec( Value ), tween );
       return tween;
     } ]
   },
@@ -6874,7 +6874,7 @@ jQuery.fn.extend( {
     // Show any hidden elements after setting opacity to 0
     return this.filter( isHidden ).css( "opacity", 0 ).show()
 
-      // Animate to the value specified
+      // Animate to the Value specified
       .end().animate( { opacity: to }, speed, easing, callback );
   },
   animate: function( prop, speed, easing, callback ) {
@@ -7091,8 +7091,8 @@ jQuery.fn.delay = function( time, type ) {
   input.type = "checkbox";
 
   // Support: iOS<=5.1, Android<=4.2+
-  // Default value for a checkbox should be "on"
-  support.checkOn = input.value !== "";
+  // Default Value for a checkbox should be "on"
+  support.checkOn = input.Value !== "";
 
   // Support: IE<=11+
   // Must access selectedIndex to make default options select
@@ -7104,11 +7104,11 @@ jQuery.fn.delay = function( time, type ) {
   support.optDisabled = !opt.disabled;
 
   // Support: IE<=11+
-  // An input loses its value after becoming a radio
+  // An input loses its Value after becoming a radio
   input = document.createElement( "input" );
-  input.value = "t";
+  input.Value = "t";
   input.type = "radio";
-  support.radioValue = input.value === "t";
+  support.radioValue = input.Value === "t";
 } )();
 
 
@@ -7116,8 +7116,8 @@ var boolHook,
   attrHandle = jQuery.expr.attrHandle;
 
 jQuery.fn.extend( {
-  attr: function( name, value ) {
-    return access( this, jQuery.attr, name, value, arguments.length > 1 );
+  attr: function( name, Value ) {
+    return access( this, jQuery.attr, name, Value, arguments.length > 1 );
   },
 
   removeAttr: function( name ) {
@@ -7128,7 +7128,7 @@ jQuery.fn.extend( {
 } );
 
 jQuery.extend( {
-  attr: function( elem, name, value ) {
+  attr: function( elem, name, Value ) {
     var ret, hooks,
       nType = elem.nodeType;
 
@@ -7139,7 +7139,7 @@ jQuery.extend( {
 
     // Fallback to prop when attributes are not supported
     if ( typeof elem.getAttribute === "undefined" ) {
-      return jQuery.prop( elem, name, value );
+      return jQuery.prop( elem, name, Value );
     }
 
     // All attributes are lowercase
@@ -7150,19 +7150,19 @@ jQuery.extend( {
         ( jQuery.expr.match.bool.test( name ) ? boolHook : undefined );
     }
 
-    if ( value !== undefined ) {
-      if ( value === null ) {
+    if ( Value !== undefined ) {
+      if ( Value === null ) {
         jQuery.removeAttr( elem, name );
         return;
       }
 
       if ( hooks && "set" in hooks &&
-        ( ret = hooks.set( elem, value, name ) ) !== undefined ) {
+        ( ret = hooks.set( elem, Value, name ) ) !== undefined ) {
         return ret;
       }
 
-      elem.setAttribute( name, value + "" );
-      return value;
+      elem.setAttribute( name, Value + "" );
+      return Value;
     }
 
     if ( hooks && "get" in hooks && ( ret = hooks.get( elem, name ) ) !== null ) {
@@ -7177,24 +7177,24 @@ jQuery.extend( {
 
   attrHooks: {
     type: {
-      set: function( elem, value ) {
-        if ( !support.radioValue && value === "radio" &&
+      set: function( elem, Value ) {
+        if ( !support.radioValue && Value === "radio" &&
           jQuery.nodeName( elem, "input" ) ) {
-          var val = elem.value;
-          elem.setAttribute( "type", value );
+          var val = elem.Value;
+          elem.setAttribute( "type", Value );
           if ( val ) {
-            elem.value = val;
+            elem.Value = val;
           }
-          return value;
+          return Value;
         }
       }
     }
   },
 
-  removeAttr: function( elem, value ) {
+  removeAttr: function( elem, Value ) {
     var name, propName,
       i = 0,
-      attrNames = value && value.match( rnotwhite );
+      attrNames = Value && Value.match( rnotwhite );
 
     if ( attrNames && elem.nodeType === 1 ) {
       while ( ( name = attrNames[ i++ ] ) ) {
@@ -7215,8 +7215,8 @@ jQuery.extend( {
 
 // Hooks for boolean attributes
 boolHook = {
-  set: function( elem, value, name ) {
-    if ( value === false ) {
+  set: function( elem, Value, name ) {
+    if ( Value === false ) {
 
       // Remove boolean attributes when set to false
       jQuery.removeAttr( elem, name );
@@ -7252,8 +7252,8 @@ var rfocusable = /^(?:input|select|textarea|button)$/i,
   rclickable = /^(?:a|area)$/i;
 
 jQuery.fn.extend( {
-  prop: function( name, value ) {
-    return access( this, jQuery.prop, name, value, arguments.length > 1 );
+  prop: function( name, Value ) {
+    return access( this, jQuery.prop, name, Value, arguments.length > 1 );
   },
 
   removeProp: function( name ) {
@@ -7264,7 +7264,7 @@ jQuery.fn.extend( {
 } );
 
 jQuery.extend( {
-  prop: function( elem, name, value ) {
+  prop: function( elem, name, Value ) {
     var ret, hooks,
       nType = elem.nodeType;
 
@@ -7280,13 +7280,13 @@ jQuery.extend( {
       hooks = jQuery.propHooks[ name ];
     }
 
-    if ( value !== undefined ) {
+    if ( Value !== undefined ) {
       if ( hooks && "set" in hooks &&
-        ( ret = hooks.set( elem, value, name ) ) !== undefined ) {
+        ( ret = hooks.set( elem, Value, name ) ) !== undefined ) {
         return ret;
       }
 
-      return ( elem[ name ] = value );
+      return ( elem[ name ] = Value );
     }
 
     if ( hooks && "get" in hooks && ( ret = hooks.get( elem, name ) ) !== null ) {
@@ -7301,8 +7301,8 @@ jQuery.extend( {
       get: function( elem ) {
 
         // elem.tabIndex doesn't always return the
-        // correct value when it hasn't been explicitly set
-        // http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+        // correct Value when it hasn't been explicitly set
+        // http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-Values-with-javascript/
         // Use proper attribute retrieval(#12072)
         var tabindex = jQuery.find.attr( elem, "tabindex" );
 
@@ -7359,18 +7359,18 @@ function getClass( elem ) {
 }
 
 jQuery.fn.extend( {
-  addClass: function( value ) {
+  addClass: function( Value ) {
     var classes, elem, cur, curValue, clazz, j, finalValue,
       i = 0;
 
-    if ( jQuery.isFunction( value ) ) {
+    if ( jQuery.isFunction( Value ) ) {
       return this.each( function( j ) {
-        jQuery( this ).addClass( value.call( this, j, getClass( this ) ) );
+        jQuery( this ).addClass( Value.call( this, j, getClass( this ) ) );
       } );
     }
 
-    if ( typeof value === "string" && value ) {
-      classes = value.match( rnotwhite ) || [];
+    if ( typeof Value === "string" && Value ) {
+      classes = Value.match( rnotwhite ) || [];
 
       while ( ( elem = this[ i++ ] ) ) {
         curValue = getClass( elem );
@@ -7397,13 +7397,13 @@ jQuery.fn.extend( {
     return this;
   },
 
-  removeClass: function( value ) {
+  removeClass: function( Value ) {
     var classes, elem, cur, curValue, clazz, j, finalValue,
       i = 0;
 
-    if ( jQuery.isFunction( value ) ) {
+    if ( jQuery.isFunction( Value ) ) {
       return this.each( function( j ) {
-        jQuery( this ).removeClass( value.call( this, j, getClass( this ) ) );
+        jQuery( this ).removeClass( Value.call( this, j, getClass( this ) ) );
       } );
     }
 
@@ -7411,8 +7411,8 @@ jQuery.fn.extend( {
       return this.attr( "class", "" );
     }
 
-    if ( typeof value === "string" && value ) {
-      classes = value.match( rnotwhite ) || [];
+    if ( typeof Value === "string" && Value ) {
+      classes = Value.match( rnotwhite ) || [];
 
       while ( ( elem = this[ i++ ] ) ) {
         curValue = getClass( elem );
@@ -7443,17 +7443,17 @@ jQuery.fn.extend( {
     return this;
   },
 
-  toggleClass: function( value, stateVal ) {
-    var type = typeof value;
+  toggleClass: function( Value, stateVal ) {
+    var type = typeof Value;
 
     if ( typeof stateVal === "boolean" && type === "string" ) {
-      return stateVal ? this.addClass( value ) : this.removeClass( value );
+      return stateVal ? this.addClass( Value ) : this.removeClass( Value );
     }
 
-    if ( jQuery.isFunction( value ) ) {
+    if ( jQuery.isFunction( Value ) ) {
       return this.each( function( i ) {
         jQuery( this ).toggleClass(
-          value.call( this, i, getClass( this ), stateVal ),
+          Value.call( this, i, getClass( this ), stateVal ),
           stateVal
         );
       } );
@@ -7467,7 +7467,7 @@ jQuery.fn.extend( {
         // Toggle individual class names
         i = 0;
         self = jQuery( this );
-        classNames = value.match( rnotwhite ) || [];
+        classNames = Value.match( rnotwhite ) || [];
 
         while ( ( className = classNames[ i++ ] ) ) {
 
@@ -7480,7 +7480,7 @@ jQuery.fn.extend( {
         }
 
       // Toggle whole class name
-      } else if ( value === undefined || type === "boolean" ) {
+      } else if ( Value === undefined || type === "boolean" ) {
         className = getClass( this );
         if ( className ) {
 
@@ -7494,7 +7494,7 @@ jQuery.fn.extend( {
         // falling back to the empty string if nothing was stored.
         if ( this.setAttribute ) {
           this.setAttribute( "class",
-            className || value === false ?
+            className || Value === false ?
             "" :
             dataPriv.get( this, "__className__" ) || ""
           );
@@ -7527,7 +7527,7 @@ jQuery.fn.extend( {
 var rreturn = /\r/g;
 
 jQuery.fn.extend( {
-  val: function( value ) {
+  val: function( Value ) {
     var hooks, ret, isFunction,
       elem = this[ 0 ];
 
@@ -7538,26 +7538,26 @@ jQuery.fn.extend( {
 
         if ( hooks &&
           "get" in hooks &&
-          ( ret = hooks.get( elem, "value" ) ) !== undefined
+          ( ret = hooks.get( elem, "Value" ) ) !== undefined
         ) {
           return ret;
         }
 
-        ret = elem.value;
+        ret = elem.Value;
 
         return typeof ret === "string" ?
 
           // Handle most common string cases
           ret.replace( rreturn, "" ) :
 
-          // Handle cases where value is null/undef or number
+          // Handle cases where Value is null/undef or number
           ret == null ? "" : ret;
       }
 
       return;
     }
 
-    isFunction = jQuery.isFunction( value );
+    isFunction = jQuery.isFunction( Value );
 
     return this.each( function( i ) {
       var val;
@@ -7567,9 +7567,9 @@ jQuery.fn.extend( {
       }
 
       if ( isFunction ) {
-        val = value.call( this, i, jQuery( this ).val() );
+        val = Value.call( this, i, jQuery( this ).val() );
       } else {
-        val = value;
+        val = Value;
       }
 
       // Treat null/undefined as ""; convert numbers to string
@@ -7580,16 +7580,16 @@ jQuery.fn.extend( {
         val += "";
 
       } else if ( jQuery.isArray( val ) ) {
-        val = jQuery.map( val, function( value ) {
-          return value == null ? "" : value + "";
+        val = jQuery.map( val, function( Value ) {
+          return Value == null ? "" : Value + "";
         } );
       }
 
       hooks = jQuery.valHooks[ this.type ] || jQuery.valHooks[ this.nodeName.toLowerCase() ];
 
       // If set returns undefined, fall back to normal setting
-      if ( !hooks || !( "set" in hooks ) || hooks.set( this, val, "value" ) === undefined ) {
-        this.value = val;
+      if ( !hooks || !( "set" in hooks ) || hooks.set( this, val, "Value" ) === undefined ) {
+        this.Value = val;
       }
     } );
   }
@@ -7601,17 +7601,17 @@ jQuery.extend( {
       get: function( elem ) {
 
         // Support: IE<11
-        // option.value not trimmed (#14858)
-        return jQuery.trim( elem.value );
+        // option.Value not trimmed (#14858)
+        return jQuery.trim( elem.Value );
       }
     },
     select: {
       get: function( elem ) {
-        var value, option,
+        var Value, option,
           options = elem.options,
           index = elem.selectedIndex,
           one = elem.type === "select-one" || index < 0,
-          values = one ? null : [],
+          Values = one ? null : [],
           max = one ? index + 1 : options.length,
           i = index < 0 ?
             max :
@@ -7630,42 +7630,42 @@ jQuery.extend( {
               ( !option.parentNode.disabled ||
                 !jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
 
-            // Get the specific value for the option
-            value = jQuery( option ).val();
+            // Get the specific Value for the option
+            Value = jQuery( option ).val();
 
             // We don't need an array for one selects
             if ( one ) {
-              return value;
+              return Value;
             }
 
             // Multi-Selects return an array
-            values.push( value );
+            Values.push( Value );
           }
         }
 
-        return values;
+        return Values;
       },
 
-      set: function( elem, value ) {
+      set: function( elem, Value ) {
         var optionSet, option,
           options = elem.options,
-          values = jQuery.makeArray( value ),
+          Values = jQuery.makeArray( Value ),
           i = options.length;
 
         while ( i-- ) {
           option = options[ i ];
           if ( option.selected =
-              jQuery.inArray( jQuery.valHooks.option.get( option ), values ) > -1
+              jQuery.inArray( jQuery.valHooks.option.get( option ), Values ) > -1
           ) {
             optionSet = true;
           }
         }
 
-        // Force browsers to behave consistently when non-matching value is set
+        // Force browsers to behave consistently when non-matching Value is set
         if ( !optionSet ) {
           elem.selectedIndex = -1;
         }
-        return values;
+        return Values;
       }
     }
   }
@@ -7674,15 +7674,15 @@ jQuery.extend( {
 // Radios and checkboxes getter/setter
 jQuery.each( [ "radio", "checkbox" ], function() {
   jQuery.valHooks[ this ] = {
-    set: function( elem, value ) {
-      if ( jQuery.isArray( value ) ) {
-        return ( elem.checked = jQuery.inArray( jQuery( elem ).val(), value ) > -1 );
+    set: function( elem, Value ) {
+      if ( jQuery.isArray( Value ) ) {
+        return ( elem.checked = jQuery.inArray( jQuery( elem ).val(), Value ) > -1 );
       }
     }
   };
   if ( !support.checkOn ) {
     jQuery.valHooks[ this ].get = function( elem ) {
-      return elem.getAttribute( "value" ) === null ? "on" : elem.value;
+      return elem.getAttribute( "Value" ) === null ? "on" : elem.Value;
     };
   }
 } );
@@ -8435,11 +8435,11 @@ jQuery.extend( {
         },
 
         // Caches the header
-        setRequestHeader: function( name, value ) {
+        setRequestHeader: function( name, Value ) {
           var lname = name.toLowerCase();
           if ( !state ) {
             name = requestHeadersNames[ lname ] = requestHeadersNames[ lname ] || name;
-            requestHeaders[ name ] = value;
+            requestHeaders[ name ] = Value;
           }
           return this;
         },
@@ -8569,7 +8569,7 @@ jQuery.extend( {
       if ( s.cache === false ) {
         s.url = rts.test( cacheURL ) ?
 
-          // If there is already a '_' parameter, set its value
+          // If there is already a '_' parameter, set its Value
           cacheURL.replace( rts, "$1_=" + nonce++ ) :
 
           // Otherwise add one to the end
@@ -8957,15 +8957,15 @@ function buildParams( prefix, obj, traditional, add ) {
 }
 
 // Serialize an array of form elements or a set of
-// key/values into a query string
+// key/Values into a query string
 jQuery.param = function( a, traditional ) {
   var prefix,
     s = [],
-    add = function( key, value ) {
+    add = function( key, Value ) {
 
-      // If value is a function, invoke it and return its value
-      value = jQuery.isFunction( value ) ? value() : ( value == null ? "" : value );
-      s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
+      // If Value is a function, invoke it and return its Value
+      Value = jQuery.isFunction( Value ) ? Value() : ( Value == null ? "" : Value );
+      s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( Value );
     };
 
   // Set traditional to true for jQuery <= 1.3.2 behavior.
@@ -8978,7 +8978,7 @@ jQuery.param = function( a, traditional ) {
 
     // Serialize the form elements
     jQuery.each( a, function() {
-      add( this.name, this.value );
+      add( this.name, this.Value );
     } );
 
   } else {
@@ -9020,9 +9020,9 @@ jQuery.fn.extend( {
         null :
         jQuery.isArray( val ) ?
           jQuery.map( val, function( val ) {
-            return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+            return { name: elem.name, Value: val.replace( rCRLF, "\r\n" ) };
           } ) :
-          { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+          { name: elem.name, Value: val.replace( rCRLF, "\r\n" ) };
     } ).get();
   }
 } );
@@ -9283,7 +9283,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
   // Handle iff the expected data type is "jsonp" or we have a parameter to set
   if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
 
-    // Get callback name, remembering preexisting value associated with it
+    // Get callback name, remembering preexisting Value associated with it
     callbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?
       s.jsonpCallback() :
       s.jsonpCallback;
@@ -9315,11 +9315,11 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
     // Clean-up function (fires after converters)
     jqXHR.always( function() {
 
-      // If previous value didn't exist - remove it
+      // If previous Value didn't exist - remove it
       if ( overwritten === undefined ) {
         jQuery( window ).removeProp( callbackName );
 
-      // Otherwise restore preexisting value
+      // Otherwise restore preexisting Value
       } else {
         window[ callbackName ] = overwritten;
       }
@@ -9437,7 +9437,7 @@ jQuery.fn.load = function( url, params, callback ) {
       url: url,
 
       // If "type" variable is undefined, then "GET" method will be used.
-      // Make value of this field explicit since
+      // Make Value of this field explicit since
       // user can override it through ajaxSetup method
       type: type || "GET",
       dataType: "html",
@@ -9709,11 +9709,11 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
     function( defaultExtra, funcName ) {
 
     // Margin is only for outerHeight, outerWidth
-    jQuery.fn[ funcName ] = function( margin, value ) {
+    jQuery.fn[ funcName ] = function( margin, Value ) {
       var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
-        extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
+        extra = defaultExtra || ( margin === true || Value === true ? "margin" : "border" );
 
-      return access( this, function( elem, type, value ) {
+      return access( this, function( elem, type, Value ) {
         var doc;
 
         if ( jQuery.isWindow( elem ) ) {
@@ -9737,13 +9737,13 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
           );
         }
 
-        return value === undefined ?
+        return Value === undefined ?
 
           // Get width or height on the element, requesting but not forcing parseFloat
           jQuery.css( elem, type, extra ) :
 
           // Set width or height on the element
-          jQuery.style( elem, type, value, extra );
+          jQuery.style( elem, type, Value, extra );
       }, type, chainable ? margin : undefined, chainable, null );
     };
   } );

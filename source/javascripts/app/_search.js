@@ -41,10 +41,10 @@
     searchResults.addClass('visible');
 
     // ESC clears the field
-    if (event.keyCode === 27) this.value = '';
+    if (event.keyCode === 27) this.Value = '';
 
-    if (this.value) {
-      var results = index.search(this.value).filter(function(r) {
+    if (this.Value) {
+      var results = index.search(this.Value).filter(function(r) {
         return r.score > 0.0001;
       });
 
@@ -57,7 +57,7 @@
         highlight.call(this);
       } else {
         searchResults.html('<li></li>');
-        $('.search-results li').text('No Results Found for "' + this.value + '"');
+        $('.search-results li').text('No Results Found for "' + this.Value + '"');
       }
     } else {
       unhighlight();
@@ -66,7 +66,7 @@
   }
 
   function highlight() {
-    if (this.value) content.highlight(this.value, highlightOpts);
+    if (this.Value) content.highlight(this.Value, highlightOpts);
   }
 
   function unhighlight() {
