@@ -56,7 +56,7 @@ language_tabs:
 
 # Endpoints
 
-## Profile Settings
+## User Settings
 
 > Call returns
 
@@ -76,12 +76,12 @@ language_tabs:
 }
 ```
 
-Use this endpoint to get profile settings for a user.
+Get user profile.
 
 `GET http://dev.oraiapp.com/v1_5/sales/getUser/tid/uid/sessionid`
 
 
-## Individual User Dashboard with Sessions
+## User Sessions
 
 > Call returns
 
@@ -103,7 +103,7 @@ Use this endpoint to get profile settings for a user.
 }
 ```
 
-Use this endpoint to get individual user dashboard including sessions
+Get user sessions.
 
 `GET http://sdev.tryoratio.com/v1_5/getUserSessions/tid/uid/sessionid`
 
@@ -141,7 +141,7 @@ Use this endpoint to get individual user dashboard including sessions
 }
 ```
 
-Use this endpoint to get team settings. Requester must be a manager.
+Get team settings. Requester must be team manager.
 
 `GET http://sdev.tryoration.com/v1_5/sales/getTeamSettings/cid/tid/uid/sessionid`
 
@@ -166,11 +166,11 @@ Use this endpoint to get team settings. Requester must be a manager.
 }
 ```
 
-Use this endpoint to team results for a manager. Requester must be a manager
+Get team results. User must be team manager.
 
 `GET http://sdev.tryoratio.com/sales/v1_5/getTeam/cid/tid/uid/sessionid`
 
-## Manager Products
+## Products
 
 > Call returns
 
@@ -220,7 +220,7 @@ Use this endpoint to team results for a manager. Requester must be a manager
 }
 ```
 
-Use this endpoint to get products and all corresponding modules under manager
+Get products and modules. Requester must be a manager.
 
 `GET sdev.tryoration.com/v1_5/sales/getManagerProducts/cid/uid/sessionid`
 
@@ -272,41 +272,9 @@ Use this endpoint to get products and all corresponding modules under manager
 }
 ```
 
-Use this endpoint to get information about a session.
+Get session.
 
 `GET sdev.tryoration.com/v1_5/sales/getSesion/uid/id/sessionid`
-
-## Edit Module
-
-> POST input
-
-```json
-{
-	"PID": "product-id",
-	"ID": "module-id",
-	"Name ": "some - name ",
-	"Instructions": ["string1", "string"],
-	"Keywords": ["word1", "word2"],
-	"TargetTime": "time"
-}
-```
-
-> Call returns
-
-```json
-{
-	"PID": "product-id",
-	"ID": "module-id",
-	"Name ": "some - name ",
-	"Instructions": ["string1", "string"],
-	"Keywords": ["word1", "word2"],
-	"TargetTime": "time"
-}
-```
-
-Use this endpoint to edit a module. Make sure to fill all the fields of the module. This will remove the old module and replace it
-
-`POST http:/sdev.tryoration.com/sales/v1_5/postModule/uid/sessionid`
 
 
 ## Individual Session Performance
@@ -319,7 +287,7 @@ Use this endpoint to edit a module. Make sure to fill all the fields of the modu
 }
 ```
 
-Use this endpoint to get individual user performance.
+Get session information for user.
 
 `GET http://tryoration.com/sales/v1_5/getsession/uid/sid/sessionid`
 
@@ -347,7 +315,7 @@ Use this endpoint to get individual user performance.
 }
 ```
 
-Use this endpoint to create a new company.
+Create company. Name, Location required.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putCompany/sessionid`
 
@@ -374,12 +342,12 @@ Use this endpoint to create a new company.
 }
 ```
 
-Use this endpoint to create a new team.
+Create new team. CID, Name, ManagerID required.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putTeam/sessionid`
 
 
-## Create, Update User
+## Create User
 
 > Post input
 
@@ -412,8 +380,8 @@ Use this endpoint to create a new team.
 	"Manager": "bool manager"
 }
 ```
-This endpoitn is used jsut to create a new user. All the fields must be filled.
-Use this endpoint to create a new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
+
+Create new user. TID, CID, Email, Name, LastName reuqired. Use this endpoint to create new user. No user created if invite does not exist. Invite deleted. iid=man user is a manager.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putUser/iid/sessionid`
 
@@ -439,11 +407,11 @@ Use this endpoint to create a new user. No user created if invite does not exist
 }
 ```
 
-Use this endpoint to create new product.
+Create new product. TID, Name required.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putProduct/sessionid`
 
-## Create, Update Module
+## Create Module
 
 > POST input
 
@@ -470,7 +438,7 @@ Use this endpoint to create new product.
 }
 ```
 
-Use this endpoint to create or update a new module. Empty ID fields creates a new module. Requester must e manager.
+Create module. All but ID field required.
 
 `GET http://sdev.tryoration.com/v1_5/sales/putModule/cid/tid/sessionid`
 
@@ -490,7 +458,7 @@ Use this endpoint to create or update a new module. Empty ID fields creates a ne
 ]
 ```
 
-Use this endpoint to send invitation to new user. Requester must be a manager
+Send invitation to new user. TID, Email, TeamName, CID, ManagerName required. User must be a manager.
 
 `GET http://sdev.tryoration.com/v1_5/sales/sendInvite/sessionid`
 
@@ -521,7 +489,7 @@ Use this endpoint to send invitation to new user. Requester must be a manager
 }
 ```
 
-Use this endpoint to handle an invitation accepted by a user.
+Handle invitations accepted by user.
 
 `GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/id`
 
@@ -542,7 +510,7 @@ Use this endpoint to handle an invitation accepted by a user.
 }
 ```
 
-Use this endpoint to put a new session. This is an internal package funciton.
+Create new session. Internal library function.
 
 ## Put Image
 
@@ -555,36 +523,190 @@ Use this endpoint to put a new session. This is an internal package funciton.
 }
 ```
 
-Enter an image for a user. user must enter an image for each team he joins.
+Enter image for user. Image needed for each team.
 
-`GET http://sdev.tryoration.com/v1_5/sales/getInvite/tid/uid`
+`GET http://sdev.tryoration.com/v1_5/sales/putImage/tid/uid`
+
+## Update Company
+
+> POST input
+
+```json
+{
+	"Name": "some-name",
+	"Location": "some-location",
+	"Image": "some-image"
+}
+```
+
+> Call returns
+
+```json
+{
+	"ID": "gcomapny ID",
+	"Name": "some-name",
+	"Location": "some-location",
+	"Image": "some-image"
+}
+```
+
+Update Company. Name, Location, WatsonID required. Old object replaced.
+
+`POST http:/sdev.tryoration.com/sales/updateCompany/sessionid`
+
+## Update Team
+
+> POST input
+
+```json
+{
+	"CID": "companyID",
+	"Name": "some-name",
+	"ManagerID": "some-id",
+  "ID": "some-id"
+}
+```
+
+> Call returns
+
+```json
+{
+	"CID": "companyID",
+	"ID": "team ID",
+	"Name": "some-name",
+	"ManagerID": "some-id"
+}
+```
+
+Update Team. All attributes required. Old object replaced.
+
+`POST http:/sdev.tryoration.com/sales/updateTeam/sessionid`
+
+## Update User
+
+> POST input
+
+```json
+{
+	"TID": "team ID",
+	"CID": "CompanyID",
+  "ID": "userID",
+	"Email": "some email. Do not send for current user. Will get 400",
+	"Name": "some-name",
+	"LastName": "some-lastname",
+	"Image": "some-image",
+	"Performance": 0,
+	"Sessions": 0,
+}
+```
+
+> Call returns
+
+```json
+{
+	"TID": "team ID",
+	"CID": "company ID",
+	"ID": "user ID",
+	"Email": "some email",
+	"Name": "some-name",
+	"LastName": "some-lastname",
+	"Image": "some-image",
+	"Performance": "int perf",
+	"Sessions": "some sessions",
+	"Manager": "bool manager"
+}
+```
+
+Update User. TID, ID, CID, Name, LastName required. Old object replaced.
+
+`POST http:/sdev.tryoration.com/sales/updateUser/sessionid`
+
+## Update Product
+
+> POST input
+
+```json
+{
+	"TID": "team ID",
+  "ID": "product ID",
+	"Name": "some-name",
+	"Image": "some-image"
+}
+```
+
+> Call returns
+```json
+{
+	"ID": "product ID",
+  "TID": "team ID",
+	"Name": "some-name",
+	"Image": "some-image"
+}
+```
+
+
+Update Product. TID, ID Name required. Old object replaced.
+
+`POST http:/sdev.tryoration.com/sales/updateProduct/sessionid`
+
+## Update Module
+
+> POST input
+
+```json
+{
+	"PID": "product-id",
+	"ID": "module-id",
+	"Name ": "some - name ",
+	"Instructions": ["string1", "string"],
+	"Keywords": ["word1", "word2"],
+	"TargetTime": "time"
+}
+```
+
+> Call returns
+
+```json
+{
+	"PID": "product-id",
+	"ID": "module-id",
+	"Name ": "some - name ",
+	"Instructions": ["string1", "string"],
+	"Keywords": ["word1", "word2"],
+	"TargetTime": "time"
+}
+```
+
+Update module. All fields required.
+
+`POST http:/sdev.tryoration.com/sales/updateModule/cid/tid/sessionid`
 
 ## Delete Product
 
-Use this endpoint to delete product. All modules under product removed.
+Delete product. All modules under product removed.
 
-`GET http://dev.oraiapp.com/v1_5/sales/deleteProduct/cid/tid/pid/uid/sessionid`
+`DELETE http://dev.oraiapp.com/v1_5/sales/deleteProduct/cid/tid/pid/uid/sessionid`
 
 ## Delete Module
 
-Use this endpoint to delete a module.
+Delete module.
 
-`GET http://dev.oraiapp.com/v1_5/sales/deleteModule/cid/tid/pid/mid/uid/sessionid`
+`DELETE http://dev.oraiapp.com/v1_5/sales/deleteModule/cid/tid/pid/mid/uid/sessionid`
 
 ## Delete Member
 
-Use this endpoint to delete a module. All sessions under member removed.
+Delete member. All sessions under member removed.
 
-`GET http://dev.oraiapp.com/v1_5/sales/deleteMember/cid/tid/uid/mid/sessionid`
+`DELETE http://dev.oraiapp.com/v1_5/sales/deleteMember/cid/tid/uid/mid/sessionid`
 
 ## Delete Session
 
-Use this endpoint to delete a session
+Delete session.
 
-`GET dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid`
+`DELETE dev.oraiapp.com/v1_5/sales/deleteSession/sid/uid/sessionid`
 
 ## Delete Invite
 
-Use this endpoint to delete an invite.
+Delete invite.
 
-`GET http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/uid/mid/sessionid`
+`DELETE http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/iid/mid/sessionid`
