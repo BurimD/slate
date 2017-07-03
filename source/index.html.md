@@ -45,7 +45,7 @@ language_tabs:
 
 ```json
 {
-    "Error": "Not a manager"
+    "Error": "Not a manager || Not authenticated"
 }
 ```
 
@@ -55,6 +55,36 @@ language_tabs:
 
 
 # Endpoints
+
+## Login
+
+> Call returns
+
+```json
+{
+  "sessionID": "generated sessionID"
+}
+```
+
+Login/authenticate against backend Server. User browser must support cookies. If user is autheticated through firebase a session is started in login. beegoSessionID cookie created using sha256. This cookie is used as key for redis. A random sessionID is generated and returned to user. This sessionID is stored within the redis object whose key is the session cookie. It is stored as the key for:
+    sessionID -> beegoSessionID
+The final mapping:
+    beegoSessionID -> sessionID -> beegoSessionID||uid
+SessionID and cookie need to be included in all future requests. validateSession checks if the above mapping is still valid in memory and returns true or false.
+
+`GET http://dev.oraiapp.com/v1_5/sales/login/`
+
+## Logout
+
+> Call returns
+
+```json
+{
+  "msg": "Session destroyed"
+}
+```
+
+Delete session, and redis key-value pair. Cookie no longer sent to user browser.
 
 ## User Settings
 

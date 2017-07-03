@@ -262,7 +262,7 @@
 <p>Return</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not a manager"</span><span class="w">
+    </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not a manager || Not authenticated"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <ul>
@@ -272,6 +272,34 @@
 </ul>
 
 <h1 id="endpoints">Endpoints</h1>
+
+<h2 id="login">Login</h2>
+
+<blockquote>
+<p>Call returns</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"sessionID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generated sessionID"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Login/authenticate against backend Server. User browser must support cookies. If user is autheticated through firebase a session is started in login. beegoSessionID cookie created using sha256. This cookie is used as key for redis. A random sessionID is generated and returned to user. This sessionID is stored within the redis object whose key is the session cookie. It is stored as the key for:
+    sessionID -&gt; beegoSessionID
+The final mapping:
+    beegoSessionID -&gt; sessionID -&gt; beegoSessionID||uid
+SessionID and cookie need to be included in all future requests. validateSession checks if the above mapping is still valid in memory and returns true or false.</p>
+
+<p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/login/</code></p>
+
+<h2 id="logout">Logout</h2>
+
+<blockquote>
+<p>Call returns</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Session destroyed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Delete session, and redis key-value pair. Cookie no longer sent to user browser.</p>
 
 <h2 id="user-settings">User Settings</h2>
 
