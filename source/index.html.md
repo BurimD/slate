@@ -740,3 +740,21 @@ Delete session.
 Delete invite.
 
 `DELETE http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/iid/mid/sessionid`
+
+# Business Rules
+
+- A company is identified by its CompanyID. Company must have a name. Company
+location and image are not mandatory.
+- A company has teams. Each team has one or more managers. Each team has one or
+more products assigned to it.
+- A team belongs to a company
+- Products are identified by their productID. A product must have a name. Product
+images are not mandatory.
+- Products have modules. Each module belongs to exactly one product.
+- Modules are identified by their moduleID. Instructions, Name, Keywords are mandatory
+for a module. Target time is not mandatory.
+- A company has users (employees). Users are identified by their userID. Each user
+must have a name, last name. Image is not mandatory. Every user belongs to at least one team.
+- A company has managers (#sudoUser). These are normal users with special abilities.
+- Sessions are identified by sessionID. A session is an instance of a module performed by a single user.
+A session must have a date, duration and score.
