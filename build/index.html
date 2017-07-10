@@ -278,28 +278,20 @@
 <blockquote>
 <p>Call returns</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"sessionID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generated sessionID"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Login/authenticate against backend Server. User browser must support cookies. If user is autheticated through firebase a session is started in login. beegoSessionID cookie created using sha256. This cookie is used as key for redis. A random sessionID is generated and returned to user. This sessionID is stored within the redis object whose key is the session cookie. It is stored as the key for:
-    sessionID -&gt; beegoSessionID
-The final mapping:
-    beegoSessionID -&gt; sessionID -&gt; beegoSessionID||uid
-SessionID and cookie need to be included in all future requests. validateSession checks if the above mapping is still valid in memory and returns true or false.</p>
+
+<p>Returns Authentication header set to jwt token. Header should be present in all other requests.</p>
 
 <p><code class="prettyprint">GET http://dev.oraiapp.com/v1_5/sales/login/</code></p>
+
+<p>Firebase Authorization header should be set in the request. Header removed after login.</p>
 
 <h2 id="logout">Logout</h2>
 
 <blockquote>
 <p>Call returns</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Session destroyed"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Delete session, and redis key-value pair. Cookie no longer sent to user browser.</p>
+
+<p>Removes Authentication token.</p>
 
 <h2 id="user-settings">User Settings</h2>
 
@@ -917,6 +909,26 @@ SessionID and cookie need to be included in all future requests. validateSession
 <p>Delete invite.</p>
 
 <p><code class="prettyprint">DELETE http://dev.oraiapp.com/v1_5/sales/deleteInvite/cid/tid/iid/mid/sessionid</code></p>
+
+<h1 id="business-rules">Business Rules</h1>
+
+<ul>
+<li>A company is identified by its CompanyID. Company must have a name. Company
+location and image are not mandatory.</li>
+<li>A company has teams. Each team has one or more managers. Each team has one or
+more products assigned to it.</li>
+<li>A team belongs to a company</li>
+<li>Products are identified by their productID. A product must have a name. Product
+images are not mandatory.</li>
+<li>Products have modules. Each module belongs to exactly one product.</li>
+<li>Modules are identified by their moduleID. Instructions, Name, Keywords are mandatory
+for a module. Target time is not mandatory.</li>
+<li>A company has users (employees). Users are identified by their userID. Each user
+must have a name, last name. Image is not mandatory. Every user belongs to at least one team.</li>
+<li>A company has managers (#sudoUser). These are normal users with special abilities.</li>
+<li>Sessions are identified by sessionID. A session is an instance of a module performed by a single user.
+A session must have a date, duration and score.</li>
+</ul>
 
       </div>
       <div class="dark-box">
